@@ -53,4 +53,41 @@ router.get('/apply-for-an-account/:page', function (req, res, next) {
   next()
 })
 
+router.get('/register-for-ets/:page', function (req, res, next) {
+  res.locals['serviceName'] = 'Register for ETS'
+  next()
+})
+
+router.post('/register-for-ets/account-details-answer', function (req, res) {
+
+  let previousEtsUser = req.session.data['ets-register']['is-previous-ets-user']
+
+  if (previousEtsUser === 'yes') {
+    res.redirect('/register-for-ets/your-linked-representative')
+  } else {
+    res.redirect('/apply-for-an-account/')
+  }
+})
+
+router.post('/register-for-ets/operator-selection-answer', function (req, res) {
+
+  let isGHG = req.session.data['ets-register']['ghg-operator']
+
+  if (isGHG === 'yes') {
+    res.redirect('/register-for-ets/account-details')
+  } else {
+    res.redirect('/apply-for-an-account/')
+  }
+})
+
+router.post('/register-for-ets/linked-representative-answer', function (req, res) {
+
+  let linkedReps = req.session.data['ets-register']['linked-reps']
+  if (linkedReps.includes('non-existant')) {
+    res.redirect('/register-for-ets/add-new-linked-representative')
+  } else {
+    res.redirect('/register-for-ets/check-and-submit')
+  }
+})
+
 module.exports = router
