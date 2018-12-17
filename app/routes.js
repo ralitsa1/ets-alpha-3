@@ -49,6 +49,11 @@ router.get('/transfer-allowance/:page', function (req, res, next) {
   next()
 })
 
+router.get('/account/', function (req, res, next) {
+  res.locals['serviceName'] = 'Account'
+  next()
+})
+
 router.post('/transfer-allowance/:page', function (req, res, next) {
   next()
 })
