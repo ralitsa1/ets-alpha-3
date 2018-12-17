@@ -6,22 +6,8 @@ router.get('/*-submit', function(req, res, next){
   res.locals['serviceName'] = 'Submit emissions data for ETS'
   next()
 })
-router.get('/*-transfer', function(req, res, next){
-  res.locals['serviceName'] = 'Check and trade emissions for ETS'
-  next()
-})
 
-router.post("/choose-transfer-route", function(req,res){
 
-  var whichTransfer = req.session.data['whichtransfer']
-
-  if (whichTransfer == "Existing installation"){
-    res.redirect("/existing-transfer")
-  } else {
-    res.redirect("/new-transfer")
-  }
-
-})
 
 router.post("/choose-installation-route", function(req,res){
 
@@ -56,6 +42,24 @@ router.get('/apply-for-an-account/:page', function (req, res, next) {
 router.get('/register-for-ets/:page', function (req, res, next) {
   res.locals['serviceName'] = 'Register for ETS'
   next()
+})
+
+router.get('/transfer-allowance/:page', function (req, res, next) {
+  res.locals['serviceName'] = 'Check and trade emissions for ETS'
+  next()
+})
+
+router.post('/transfer-allowance/:page', function (req, res, next) {
+  next()
+})
+router.post('/transfer-allowance/select-recipient-answer', function (req, res) {
+  var whichTransfer = req.session.data['whichtransfer']
+
+  if (whichTransfer === 'Existing installation') {
+    res.redirect('existing-recipient')
+  } else {
+    res.redirect('new-recipient')
+  }
 })
 
 router.post('/register-for-ets/account-details-answer', function (req, res) {

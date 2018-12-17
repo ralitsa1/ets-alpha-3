@@ -15,7 +15,7 @@
 
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="/start-transfer">Back</a>
+  <a class="govuk-back-link" href="index">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -27,7 +27,7 @@
       </h1>
 
 
-      <form class="form" action="/2fa-transfer" method="post">
+      <form class="form" action="2fa" method="post">
 
         {% from "input/macro.njk" import govukInput %}
 

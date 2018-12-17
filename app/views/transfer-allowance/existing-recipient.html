@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Transfer to an existing recipient
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="select-recipient">Back</a>
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+input, select { display: block; }
+</style>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      <span class="govuk-caption-xl">{{ data['installationName'] }}</span>
+      Transfer to an existing recipient
+    </h1>
+
+    <form class="form" action="check-and-submit-transfer" method="post">
+      
+      <div class="govuk-form-group govuk-!-margin-bottom-6">
+        <label class="govuk-label" for="recipient-1">Recipient</label>
+        <select class="govuk-select" id="recipient-select" name="recipient-select">
+            <option value="Choose a recipient" selected>Choose a recipient</option>
+            <option value="National Grid Gas plc">National Grid Gas plc, EU-100-8976-0-88</option>
+            <option value="Conoco Phillips">Conoco Phillips, EU-100-82543-0-87</option>
+            <option value="Dalkia Utilities Services">Dalkia Utilities Services, EU-100-625343-0-99</option>
+            <option value="Perenco UK Ltd" >Perenco UK Ltd, EU-100-11674-0-56</option>
+            <option value="Polimeri Europa UK Limited">Polimeri Europa UK Limited, EU-100-77732-0-76</option>
+            <option value="De La Rue International Ltd">De La Rue International Ltd, EU-100-63522-0-03</option>
+            <option value="E.ON UK CHP Ltd">E.ON UK CHP Ltd, EU-100-99924-0-23</option>
+            <option value="Citigen (London) Ltd">Citigen (London) Ltd, EU-100-38476-0-24</option>
+            <option value="Procter & Gamble Product Supply (UK) Ltd">Procter & Gamble Product Supply (UK) Ltd, EU-100-4847-0-25</option>
+        </select>
+      </div>
+      <h2 class="govuk-heading-m">Specify the amount for units you would like to transfer</h2>
+      {% set selected = data['whichinstallation'] | trim %}
+      {% for item in data['installations'] %}
+        {% if selected == (item.name) | trim %}
+        {% for item in item.emissionAllowance %}
+          {% for type, value in item %}
+          {{ govukInput({
+            id: type,
+            name: "emissionAllowance[" + type + "][started]",
+            label: {
+              text: 'Amount of ' + type.split('-').join(" ") + ' units'
+            },
+            hint: {
+              html: 'You will have <span id="newnumber"> ' + value + ' </span> units of ' + type.split('-').join(" ") +' after this transfer'
+            },
+            classes: "govuk-input--width-5 app-emmission-transfer",
+            attributes: {
+              'data-amount': value
+            }
+          }) }}
+          {{ govukInput({
+            id: 'old'+type,
+            name: "emissionAllowance[" + type + "][moved]",
+            value: value,
+            type: 'hidden'
+          }) }}
+          {% endfor %}
+          
+        {% endfor %}  
+        {% endif %}
+      {% endfor %}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      {{ govukInput({
+        name: "recipient-type",
+        type: 'hidden',
+        value: 'existing'
+      }) }}
+    </form>
+  </div>
+  {% include "includes/sidebar.html" %}
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+/* global $ */
+  $(".app-emmission-transfer" ).each(function() {
+    var $this = $(this);
+
+    var number = $this.val();
+    var amountYouHave = $this.data('amount')
+    var amountYouWillHave;
+
+    if ( number ) {
+      amountYouWillHave = amountYouHave - number;
+    } else if ( !number) {
+      number = 0;
+      amountYouWillHave = amountYouHave;
+    }
+    $this.find('#newnumber').text( amountYouWillHave );
+
+    $this.on('input',function(e){
+      number = $this.val();  
+      if ( number ) {
+        amountYouWillHave = amountYouHave - number;
+      } else if ( !number ) {
+        number = 0
+      }
+      $this.parent().find('#newnumber').text( amountYouWillHave );
+    });
+    
+  });
+      
+</script>
+{% endblock %}
