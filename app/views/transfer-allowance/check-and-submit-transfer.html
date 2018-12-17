@@ -1,11 +1,13 @@
 {% extends "layout.html" %}
 
+{% set recipientType = data['recipient-type'] %}
+
 {% block pageTitle %}
   Confirm transfer to an existing recipient
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="/existing-transfer">Back</a>
+  <a class="govuk-back-link" href="existing-recipient">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -14,7 +16,11 @@
 
       <h1 class="govuk-heading-xl">
         <span class="govuk-caption-xl">{{ data['installationName']}}</span>
-        Confirm transfer to an existing recipient
+        {% if recipientType == 'existing' %}
+          Confirm transfer to an existing recipient
+        {% elif recipientType == 'new' %}
+           Confirm transfer to a new recipient
+        {% endif %}
       </h1>
 
 
@@ -22,16 +28,20 @@
       <!--   * `app-check-your-answers--short` for short questions -->
       <!--   * `app-check-your-answers__questions-long` for long questions -->
       <!--   * none for single group of q&a -->
-      <dl class="app-check-your-answers app-check-your-answers--short">
+      <dl class="app-check-your-answers app-check-your-answers--short govuk-!-margin-bottom-5">
         <div class="app-check-your-answers__contents">
           <dt class="app-check-your-answers__question">
             Recipient
           </dt>
           <dd class="app-check-your-answers__answer">
-             {{ data['recipient-select']}}
+          {% if recipientType == 'existing' %}
+            {{ data['recipient-select']}}
+          {% elif recipientType == 'new' %}
+            Polimeri Europa UK
+          {% endif %}
           </dd>
           <dd class="app-check-your-answers__change">
-            <a href="/existing-transfer">
+            <a href="{% if recipientType == 'existing' %}existing-recipient{% else %}new-recipient{% endif %}">
               Change<span class="govuk-visually-hidden"> recipient</span>
             </a>
           </dd>
@@ -42,41 +52,39 @@
             Recipient ID
           </dt>
           <dd class="app-check-your-answers__answer">
-            EU-100-77739-1-31
+            {% if recipientType == 'existing' %}
+              EU-100-77739-1-31
+            {% elif recipientType == 'new' %}
+              {{ data['recipient-name'] }}
+            {% endif %}
           </dd>
           <dd class="app-check-your-answers__change">
-            <a href="/existing-transfer">
-              Change<span class="govuk-visually-hidden"> Amount</span>
+            <a href="{% if recipientType == 'existing' %}existing-recipient{% else %}new-recipient{% endif %}">
+              Change<span class="govuk-visually-hidden"> recipient</span>
             </a>
           </dd>
         </div>
         {% endif %}
-
-        {% if data['unitName'] %}
-          <div class="app-check-your-answers__contents">
-            <dt class="app-check-your-answers__question">
+        {% for emission, value, object in data['emissionAllowance'] %}
+        <div class="app-check-your-answers__contents">
+          <dt class="app-check-your-answers__question">
             Unit
-            </dt>
-            <dd class="app-check-your-answers__answer">
-              {{ data['unitName']}}
-            </dd>
-            <dd class="app-check-your-answers__change">
-              <a href="/existing-transfer">
-                Change<span class="govuk-visually-hidden"> Amount</span>
-              </a>
-            </dd>
-          </div>
-        {% endif %}
-
+          </dt>
+          <dd class="app-check-your-answers__answer">
+            {{ (emission).split('-').join(" ") }}
+          </dd>
+          <dd class="app-check-your-answers__change">
+          </dd>
+        </div>
         <div class="app-check-your-answers__contents">
           <dt class="app-check-your-answers__question">
             Amount
           </dt>
           <dd class="app-check-your-answers__answer">
-            {{ data['amount-1']}}
+            {{ value.started }}
           </dd>
           <dd class="app-check-your-answers__change">
-            <a href="/existing-transfer">
+            <a href="{% if recipientType == 'existing' %}existing-recipient{% else %}transfer-amount{% endif %}">
               Change<span class="govuk-visually-hidden"> Amount</span>
             </a>
           </dd>
@@ -87,28 +95,29 @@
            New balance
           </dt>
           <dd class="app-check-your-answers__answer">
-            {% if data['allowanceUnitValue'] %}
-              {{ data['allowanceUnitValue'] - data['amount-1'] }}
-            {% else %}
-              {{ data['allowanceValue'] - data['amount-1'] }}
-            {% endif %}
-            </script>
-
-
+            {{ value.moved - value.started }}
           </dd>
           <dd class="app-check-your-answers__change">
-            <a href="/existing-transfer">
-            </a>
           </dd>
         </div>
+        {% endfor %}
       </dl>
 
 
-      <p style="margin-top:-30px">
+      <p>
         Your transfer will be sent to another representative on your account to be approved.
       </p>
-
-      <a class="govuk-button" href="/confirmation-transfer" role="button">
+      {% if recipientType == 'new' %}
+      <div class="govuk-checkboxes govuk-!-margin-bottom-6" data-module="checkboxes">
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="citizenship-conditional-1" name="citizen" type="checkbox" value="email" data-aria-controls="conditional-citizenship-conditional-1">
+          <label class="govuk-label govuk-checkboxes__label" for="citizenship-conditional-1">
+            Save this recipient so you can transfer to them again later
+          </label>
+        </div>
+      </div>
+      {% endif %}
+      <a class="govuk-button" href="confirmation" role="button">
         Submit transfer and send for approval
       </a>
 
