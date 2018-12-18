@@ -2,7 +2,7 @@
   <aside class="app-related-items" role="complementary">
     <h2 class="govuk-heading-s" id="subsection-title">
         {{ data['installationName'] }}
-      <span class="govuk-caption-m">
+      {# <span class="govuk-caption-m">
         {% set selected = data['whichinstallation'] | trim %}
         {% for item in data['installations'] %}
           {% if selected == (item.name) | trim %}
@@ -13,7 +13,7 @@
           {% endfor %}  
           {% endif %}
         {% endfor %}
-      </span>
+      </span> #}
     </h2>
     <nav role="navigation" aria-labelledby="subsection-title">
 
