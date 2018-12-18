@@ -55,9 +55,6 @@ router.get('/account/', function (req, res, next) {
   next()
 })
 
-router.post('/transfer-allowance/:page', function (req, res, next) {
-  next()
-})
 router.post('/transfer-allowance/select-recipient-answer', function (req, res) {
   var whichTransfer = req.session.data['whichtransfer']
 
