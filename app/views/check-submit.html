@@ -26,7 +26,8 @@
       <!--   * `app-check-your-answers__questions-long` for long questions -->
       <!--   * none for single group of q&a -->
       <dl class="app-check-your-answers app-check-your-answers--short">
-        <div class="app-check-your-answers__contents">
+        {% if data['emission-1'] !='' %}
+         <div class="app-check-your-answers__contents">
           <dt class="app-check-your-answers__question">
             CO<sub>2</sub>
           </dt>
@@ -38,8 +39,10 @@
               Change<span class="govuk-visually-hidden"> Carbon dioxide</span>
             </a>
           </dd>
-        </div>
-
+        </div> 
+        {% endif %}
+        
+        {% if data['emission-2'] !='' %}
         <div class="app-check-your-answers__contents">
           <dt class="app-check-your-answers__question">
             N<sub>2</sub>O
@@ -53,7 +56,8 @@
             </a>
           </dd>
         </div>
-
+        {% endif %}
+        {% if data['emission-3'] !='' %}
         <div class="app-check-your-answers__contents">
           <dt class="app-check-your-answers__question">
             PFCs
@@ -67,6 +71,7 @@
             </a>
           </dd>
         </div>
+        {% endif %}
 
         <div class="app-check-your-answers__contents">
           <dt class="app-check-your-answers__question">

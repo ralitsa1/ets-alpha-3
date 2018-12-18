@@ -67,7 +67,10 @@
             </div>
             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-how-surrender-conditional-2">
               <div class="govuk-form-group">
-                  <input class="govuk-input govuk-input--width-5 number" id="amount-to-surrender" name="amount-to-surrender" type="text" style="text-align:right;font-family: "ntatabularnumbers", "nta", Arial, sans-serif;" value="{{ data['amount-to-surrender'] }}">
+                  <label class="govuk-label" for="amount-to-surrender">
+                    Enter amount to surrender
+                  </label>
+                  <input class="govuk-input govuk-input--width-5 number" id="amount-to-surrender" name="amount-to-surrender" type="text" value="{{ data['amount-to-surrender'] }}">
 
                   <span id="balance" class="govuk-hint" style="margin-top:10px">
                     You have 2,500 allowances
