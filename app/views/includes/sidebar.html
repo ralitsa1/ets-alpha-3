@@ -3,7 +3,16 @@
     <h2 class="govuk-heading-s" id="subsection-title">
         {{ data['installationName'] }}
       <span class="govuk-caption-m">
-        {{ data['allowanceValue'] }} units of {% if data['allowanceIntlValue'] %}general {% endif %}allowance{% if data['allowanceIntlValue'] %}<br/> 138 units of CERs<br/> 20 units of ERUS{% endif %}
+        {% set selected = data['whichinstallation'] | trim %}
+        {% for item in data['installations'] %}
+          {% if selected == (item.name) | trim %}
+          {% for item in item.emissionAllowance %}
+            {% for type, value in item %}
+            {{value}} units of {{ type.split('-').join(" ") }} <br/>
+            {% endfor %}
+          {% endfor %}  
+          {% endif %}
+        {% endfor %}
       </span>
     </h2>
     <nav role="navigation" aria-labelledby="subsection-title">
