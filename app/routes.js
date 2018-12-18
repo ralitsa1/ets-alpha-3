@@ -49,6 +49,12 @@ router.get('/transfer-allowance/:page', function (req, res, next) {
   next()
 })
 
+router.get('/account/', function (req, res, next) {
+  res.locals['serviceName'] = 'Account'
+  res.locals['currentDate'] = Date.now()
+  next()
+})
+
 router.post('/transfer-allowance/:page', function (req, res, next) {
   next()
 })

@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="govuk-grid-row">
+{% for item in data['installations'] %}
+	{% if data['whichinstallation'] == item.name %}
+	<div class="govuk-grid-column-three-quarters">
+		<h1 class="govuk-heading-xl">{{ item.name }} </h1>
+	</div>
+	<div class="govuk-grid-column-one-quarter">
+		<aside class="app-related-items" role="complementary">
+			<h2 class="govuk-heading-s" id="subsection-title">
+				Tasks
+			</h2>
+			<nav role="navigation" aria-labelledby="subsection-title">
+				<ul class="govuk-list govuk-!-font-size-16">
+					<li>
+					<a href="/transaction-history-transfer">
+							View installation history
+					</a>
+					</li>
+					<li>
+					<a href="/transfer-allowance/">
+						Transfer more allowance
+					</a>
+					</li>
+				</ul>
+			</nav>
+		</aside>
+	</div>
+	<div class="govuk-grid-column-full">
+		<h2 class="govuk-heading-l">Recent transfers</h2>
+		<table class="govuk-table">
+		<thead class="govuk-table__head">
+			<tr class="govuk-table__row">
+				<th class="govuk-table__header" scope="col">Date</th>
+				<th class="govuk-table__header" scope="col">Reference</th>
+				<th class="govuk-table__header govuk-table__header" scope="col">Units</th>
+				<th class="govuk-table__header govuk-table__header" scope="col">Recipient</th>
+				<th class="govuk-table__header govuk-table__header" scope="col">Status</th>
+				{# <th class="govuk-table__header govuk-table__header" scope="col">Dynamic compliance status</th> #}
+			</tr>
+		</thead>
+		<tbody class="govuk-table__body">
+			<tr class="govuk-table__row">
+				<th class="govuk-table__header" scope="row">
+				{{ currentDate | date("DD MMMM YYYY") }}
+				</th>
+				<td class="govuk-table__cell">
+					BGT8723X
+				</td>
+				<td class="govuk-table__cell">
+				  {% for emission, value, object in data['emissionAllowance'] %}
+				  	 {{ (emission).split('-').join(" ") }}: <strong>{{ value.started }}</strong> <br />
+				  {% endfor %}
+				</td>
+				<td class="govuk-table__cell">
+				{% if data['recipient-select'] %}
+					{{ data['recipient-select'] }}
+				{% else %}
+					Polimeri Europa UK Limited
+				{% endif %}
+				</td>
+				<td class="govuk-table__cell">
+				{{ govukTag({
+					text: "awaiting approval"
+				}) }}
+				</td>
+				{# <td class="govuk-table__cell">
+				{{ govukTag({
+					text: "B"
+				}) }}
+				</td> #}
+			</tr>
+		</tbody>
+	</table>
+	</div>	
+	{% endif %}
+	{% endfor %}
+</div>
+{# {{ data | dump}} #}
+{% endblock %}

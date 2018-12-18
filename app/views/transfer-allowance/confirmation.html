@@ -24,7 +24,9 @@
           Your reference number<br><strong>BGT8723X</strong>
         </div>
       </div>
-
+      {{ govukInsetText({
+        html: "Visit account page to <a class='govuk-link' href='/account/'>check the transaction</a>"
+      }) }}
       <h2 class="govuk-heading-m"> What happens next</h2>
       {% if recipientType == 'existing' %}
         <p>
@@ -42,10 +44,9 @@
           Your transfer will need to be approved.
         </strong>
       </div>
-
+      
       <p>We've sent a notification of your transfer to all representatives for this account. Once it's approved it will take 26 hours for your transfer to be processed.<p/> 
       {% endif %}
-
       <p>You can now:</p>
 
       <ul class="govuk-list govuk-list--bullet">
