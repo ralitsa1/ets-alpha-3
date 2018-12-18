@@ -32,18 +32,19 @@
 		<table class="govuk-table">
 		<thead class="govuk-table__head">
 			<tr class="govuk-table__row">
-				<th class="govuk-table__header" scope="col">Date</th>
-				<th class="govuk-table__header" scope="col">Reference</th>
-				<th class="govuk-table__header govuk-table__header" scope="col">Units</th>
-				<th class="govuk-table__header govuk-table__header" scope="col">Recipient</th>
-				<th class="govuk-table__header govuk-table__header" scope="col">Status</th>
+				<th class="govuk-table__header app-width-2" scope="col">Date</th>
+				<th class="govuk-table__header app-width-1" scope="col">Reference</th>
+				<th class="govuk-table__header " scope="col">Units</th>
+				<th class="govuk-table__header " scope="col">Recipient</th>
+				<th class="govuk-table__header govuk-table__header app-width-3" scope="col">Status</th>
 				{# <th class="govuk-table__header govuk-table__header" scope="col">Dynamic compliance status</th> #}
 			</tr>
 		</thead>
 		<tbody class="govuk-table__body">
 			<tr class="govuk-table__row">
 				<th class="govuk-table__header" scope="row">
-				{{ currentDate | date("DD MMMM YYYY") }}
+				{{ currentDate | date("DD MMMM YYYY") }}<br/>
+				{{ currentDate | date("h:mm:ss a") }}
 				</th>
 				<td class="govuk-table__cell">
 					BGT8723X

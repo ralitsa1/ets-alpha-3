@@ -31,5 +31,14 @@ $govuk-global-styles: true;
     padding-top: 10px;
     margin-bottom: 0;
   }
-  
+}
+
+@for $i from 1 through 10 {
+  .app-width-#{$i} {
+    // width: 100%;
+    // display: block;
+    @include govuk-media-query($from: desktop) {
+      width: #{$i*10%};
+    }
+  }
 }
