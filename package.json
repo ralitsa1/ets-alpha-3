@@ -44,7 +44,8 @@
     "run-sequence": "^2.2.1",
     "sync-request": "^6.0.0",
     "universal-analytics": "^0.4.16",
-    "uuid": "^3.2.1"
+    "uuid": "^3.2.1",
+    "nunjucks-date-filter": "^0.1.1"
   },
   "greenkeeper": {
     "ignore": [
@@ -52,7 +53,6 @@
     ]
   },
   "devDependencies": {
-    "nunjucks-date-filter": "^0.1.1",
     "standard": "^11.0.1",
     "supertest": "^3.0.0"
   }
