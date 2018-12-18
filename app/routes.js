@@ -56,7 +56,6 @@ router.get('/account/', function (req, res, next) {
 })
 
 router.post('/transfer-allowance/:page', function (req, res, next) {
-  console.log(req.body)
   next()
 })
 router.post('/transfer-allowance/select-recipient-answer', function (req, res) {
