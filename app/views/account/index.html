@@ -78,5 +78,55 @@
 	{% endif %}
 	{% endfor %}
 </div>
-{# {{ data | dump}} #}
+	 {% if data['ets-submit-emmissions'] %}
+		<h2 class="govuk-heading-l">Recent submissions</h2>
+		<table class="govuk-table">
+		<thead class="govuk-table__head">
+			<tr class="govuk-table__row">
+				<th class="govuk-table__header app-width-2" scope="col">Date</th>
+				<th class="govuk-table__header app-width-1" scope="col">Reference</th>
+				<th class="govuk-table__header" scope="col">Units</th>
+				<th class="govuk-table__header" scope="col">Verifier</th>
+				<th class="govuk-table__header govuk-table__header app-width-3" scope="col">Status</th>
+			</tr>
+		</thead>
+		<tbody class="govuk-table__body">
+			<tr class="govuk-table__row">
+				<th class="govuk-table__header" scope="row">
+				{{ currentDate | date("DD MMMM YYYY") }}<br/>
+				{{ currentDate | date("h:mm:ss a") }}
+				</th>
+				<td class="govuk-table__cell">
+					BGT8723X
+				</td>
+				<td class="govuk-table__cell">
+				  {% for unit, value in data['ets-submit-emmissions']['emissions'] %}
+				  {% set unitName = unit %}
+				  {% if unit == 'co2' %}
+					  {% set unitName = 'Carbon dioxide (C0<sub>2</sub>)' %}
+				  {% elif unit == 'pfc' %}
+					  {% set unitName = 'Perfluorocarbons (PFCs)' %}
+				  {% else %}
+				  	{% set unitName = 'Nitrous oxide (N<sub>2</sub>O)' %}
+				  {% endif %}
+				  	 {{ unitName | safe }}: <strong>{{ value}}</strong> <br />
+				  {% endfor %}
+				</td>
+				<td class="govuk-table__cell">
+				{% if data['ets-submit-emmissions']['select-verifier'] == 'other' %}
+					{{ data['ets-submit-emmissions']['verifier'] }}
+				{% else %}
+					{{ data['ets-submit-emmissions']['select-verifier'] }}
+				{% endif %}
+				</td>
+				<td class="govuk-table__cell">
+				{{ govukTag({
+					text: "awaiting approval"
+				}) }}
+				</td>
+			</tr>
+		</tbody>
+		</table>
+
+	{% endif %}
 {% endblock %}
