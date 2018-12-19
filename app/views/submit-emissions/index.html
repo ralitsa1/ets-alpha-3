@@ -4,16 +4,6 @@
   Log in
 {% endblock %}
 
-<div class="govuk-form-group">
-  <label class="govuk-label" for="email">
-    Email address
-  </label>
-
-  <input class="govuk-input" id="email" name="email" type="email" aria-describedby="email-hint">
-</div>
-
-
-
 {% block beforeContent %}
   <a class="govuk-back-link" href="/start-submit">Back</a>
 {% endblock %}
@@ -27,9 +17,7 @@
       </h1>
 
 
-      <form class="form" action="/2fa-submit" method="post">
-
-        {% from "input/macro.njk" import govukInput %}
+      <form class="form" action="2fa" method="post">
 
         {{ govukInput({
           label: {

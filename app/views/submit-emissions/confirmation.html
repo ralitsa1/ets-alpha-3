@@ -23,10 +23,10 @@
       <h2 class="govuk-heading-m" style="margin-top:40px">What happens next</h2>
       <p class="govuk-body">We have sent you a confirmation email.</p>
       <p class="govuk-body">Your 2018 emissions still need to be verified by <strong>
-      {% if data['verifier-radio'] == 'Other' %}
-        {{ data['verifier-select'] }}
+      {% if data['ets-submit-emmissions']['select-verifier'] == 'other' %}
+        {{ data['ets-submit-emmissions']['verifier'] }}
       {% else %}
-        {{ data['verifier-radio'] }}
+        {{ data['ets-submit-emmissions']['select-verifier'] }}
       {% endif %}</strong>before 31 March 2019. We have sent them a notification email.</p>
 
 
@@ -41,13 +41,11 @@
 
         <p>You can now:</p>
 
-    <ul class="govuk-list govuk-list--bullet">
-
-            <li><a href="/installation-transfer">Make an allowance transfer</a></li>
-            <li><a href="/installation-submit">Submit emissions data for another installation or aircraft operator</a></li>
-            <li><a href="/installation-surrender">Surrender allowance for your installation or aircraft operator</a></li>
-        </ul>
-
+      <ul class="govuk-list govuk-list--bullet">
+          <li><a href="/installation-transfer">Make an allowance transfer</a></li>
+          <li><a href="/installation-submit">Submit emissions data for another installation or aircraft operator</a></li>
+          <li><a href="/installation-surrender">Surrender allowance for your installation or aircraft operator</a></li>
+      </ul>
     </div>
   </div>
 
