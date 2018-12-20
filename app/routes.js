@@ -1,38 +1,6 @@
 const express = require('express')
 const router = express.Router()
 
-// Add your routes here - above the module.exports line
-router.get('/*-submit', function(req, res, next){
-  res.locals['serviceName'] = 'Submit emissions data for ETS'
-  next()
-})
-
-
-
-router.post("/choose-installation-route", function(req,res){
-
-  var installationName = req.session.data['installationName']
-
-  if (installationName == "Scunthorpe Integrated Iron & Steel Works"){
-    res.redirect("/choose-unit-transfer")
-  } else {
-    res.redirect("/choose-transfer")
-  }
-
-})
-
-router.post("/amount-surrender-route", function(req,res){
-
-  var amountToSurrender = req.session.data['surrender-radio']
-
-  if (amountToSurrender == "Everything"){
-    res.redirect("/confirmation-surrender")
-  } else if (amountToSurrender == "Other") {
-    res.redirect("/are-you-sure-surrender")
-  }
-
-})
-
 // new routes
 router.get('/apply-for-an-account/:page', function (req, res, next) {
   res.locals['serviceName'] = 'Apply for an ETS account'
@@ -54,6 +22,11 @@ router.get('/submit-emissions/:page', function (req, res, next) {
   next()
 })
 
+router.get('/surrender-allowance/:page', function (req, res, next) {
+  res.locals['serviceName'] = 'Surrender emissions allowance for ETS'
+  next()
+})
+
 router.get('/account/', function (req, res, next) {
   res.locals['serviceName'] = 'Account'
   res.locals['currentDate'] = Date.now()
@@ -71,7 +44,6 @@ router.post('/transfer-allowance/select-recipient-answer', function (req, res) {
 })
 
 router.post('/register-for-ets/account-details-answer', function (req, res) {
-
   let previousEtsUser = req.session.data['ets-register']['is-previous-ets-user']
 
   if (previousEtsUser === 'yes') {
@@ -82,7 +54,6 @@ router.post('/register-for-ets/account-details-answer', function (req, res) {
 })
 
 router.post('/register-for-ets/operator-selection-answer', function (req, res) {
-
   let isGHG = req.session.data['ets-register']['ghg-operator']
 
   if (isGHG === 'yes') {
@@ -93,12 +64,21 @@ router.post('/register-for-ets/operator-selection-answer', function (req, res) {
 })
 
 router.post('/register-for-ets/linked-representative-answer', function (req, res) {
-
   let linkedReps = req.session.data['ets-register']['linked-reps']
   if (linkedReps.includes('non-existant')) {
     res.redirect('/register-for-ets/add-new-linked-representative')
   } else {
     res.redirect('/register-for-ets/check-and-submit')
+  }
+})
+
+router.post('/surrender-allowance/surrender-amount-answer', function (req, res) {
+  var amountToSurrender = req.session.data['ets-surrender-allowance']['amount-to-surrender']
+
+  if (amountToSurrender === 'other') {
+    res.redirect('confirm-oversurrender')
+  } else {
+    res.redirect('confirmation')
   }
 })
 
