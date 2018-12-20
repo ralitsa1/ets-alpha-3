@@ -22,14 +22,14 @@ input, select { display: block; }
       How much allowance do you want to transfer?
     </h1>
     <form class="form" action="check-and-submit-transfer" method="post">
-      {% set selected = data['whichinstallation'] | trim %}
+      {% set selected = data['ets-transfer-allowance']['installation'] | trim %}
       {% for item in data['installations'] %}
         {% if selected == (item.name) | trim %}
         {% for item in item.emissionAllowance %}
           {% for type, value in item %}
           {{ govukInput({
             id: type,
-            name: "emissionAllowance[" + type + "][started]",
+            name: "emissionAllowance[" + type + "][moved]",
             label: {
               text: 'Amount of ' + type.split('-').join(" ") + ' units'
             },
@@ -39,11 +39,12 @@ input, select { display: block; }
             classes: "govuk-input--width-5 app-emmission-transfer",
             attributes: {
               'data-amount': value
-            }
+            },
+            value: data['emissionAllowance'][type]['moved']
           }) }}
           {{ govukInput({
-            id: 'old'+type,
-            name: "emissionAllowance[" + type + "][moved]",
+            id: 'started'+type,
+            name: "emissionAllowance[" + type + "][started]",
             value: value,
             type: 'hidden'
           }) }}

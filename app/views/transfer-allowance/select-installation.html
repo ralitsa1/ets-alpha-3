@@ -15,8 +15,8 @@
 
       <form class="form" action="select-recipient" method="post">
         {{ govukRadios({
-          idPrefix: "whichinstallation",
-          name: "whichinstallation",
+          idPrefix: "select-installation",
+          name: "ets-transfer-allowance[installation]",
           fieldset: {
             legend: {
               text: "Which installation do you want to transfer emissions from?",
@@ -28,7 +28,7 @@
             {
               value: "Nevern Power Limited",
               text: "Nevern Power Limited (EU-100-73432-0-76)",
-              checked: checked ('whichinstallation', 'Nevern Power Limited'), 
+              checked: checked ("['ets-transfer-allowance']['installation']", 'Nevern Power Limited'), 
               hint: {
                 text: "52,834 units of general allowance"
               }
@@ -36,7 +36,7 @@
             {
               value: "Scunthorpe Integrated Iron & Steel Works",
               text: "Scunthorpe Integrated Iron & Steel Works (EU-100-82345-0-76)",
-              checked: checked ('whichinstallation', 'Scunthorpe Integrated Iron & Steel Works'),
+              checked: checked ("['ets-transfer-allowance']['installation']", 'Scunthorpe Integrated Iron & Steel Works'),
               hint: {
                 html: "23,871 units of general allowance<br/>138 units of CERs<br/> 20 units of ERUS"
               }
@@ -44,7 +44,7 @@
             {
               value: "Port Talbot Steelworks",
               text: "Port Talbot Steelworks (EU-100-73104-0-76)",
-              checked: checked ('whichinstallation', 'Port Talbot Steelworks'),
+              checked: checked ("['ets-transfer-allowance']['installation']", 'Port Talbot Steelworks'),
               hint: {
                 text: "1,406 units of general allowance"
               }
@@ -52,7 +52,7 @@
             {
               value: "Lynemouth Power Station",
               text: "Lynemouth Power Station (EU-100-77732-0-76)",
-              checked: checked ('whichinstallation', 'Lynemouth Power Station'),
+              checked: checked ("['ets-transfer-allowance']['installation']", 'Lynemouth Power Station'),
               hint: {
                 text: "10,473 units of general allowance"
               }
@@ -63,8 +63,6 @@
         {{ govukButton({
           text: "Continue"
         }) }}
-
-        <input type="hidden" name="installationName" id="installationName">
       </form>
 
     </div>

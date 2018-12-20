@@ -27,16 +27,18 @@ router.get('/surrender-allowance/:page', function (req, res, next) {
   next()
 })
 
-router.get('/account/', function (req, res, next) {
+router.get('/account/:id', function (req, res, next) {
   res.locals['serviceName'] = 'Account'
   res.locals['currentDate'] = Date.now()
+  res.locals['installationID'] = req.params.id
+  res.render('account/index')
   next()
 })
 
 router.post('/transfer-allowance/select-recipient-answer', function (req, res) {
-  var whichTransfer = req.session.data['whichtransfer']
+  var recipientType = req.session.data['ets-transfer-allowance']['select-recipient']
 
-  if (whichTransfer === 'Existing installation') {
+  if (recipientType === 'existing') {
     res.redirect('existing-recipient')
   } else {
     res.redirect('new-recipient')

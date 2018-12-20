@@ -13,36 +13,34 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form class="form" action="transfer-amount" method="post">
-      <h1 class="govuk-heading-xl">
-        <span class="govuk-caption-xl">{{ data['installationName']}}</span>
-        Is Polimeri Europa UK Limited your recipient?
-      </h1>
+        <h1 class="govuk-heading-xl">
+          <span class="govuk-caption-xl">{{ data['ets-transfer-allowance']['installation'] }}</span>
+          Is Polimeri Europa UK Limited your recipient?
+        </h1>
 
-      <dl class="app-check-your-answers app-check-your-answers--short">
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
-            Recipient name
-          </dt>
-          <dd class="app-check-your-answers__answer">
-             Polimeri Europa UK Limited
-          </dd>
-        </div>
-        <div class="app-check-your-answers__contents">
-          <dt class="app-check-your-answers__question">
-            Recipient ID
-          </dt>
-          <dd class="app-check-your-answers__answer">
-            {{ data['recipient-name'] }}
-          </dd>
-        </div>
-      </dl>
+        <dl class="app-check-your-answers app-check-your-answers--short">
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Recipient name
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              Polimeri Europa UK Limited
+            </dd>
+          </div>
+          <div class="app-check-your-answers__contents">
+            <dt class="app-check-your-answers__question">
+              Recipient ID
+            </dt>
+            <dd class="app-check-your-answers__answer">
+              {{ data['ets-transfer-allowance']['recepient-id'] }}
+            </dd>
+          </div>
+        </dl>
+        {{ govukButton({
+          text: "Yes, continue"
+        }) }}
 
-
-
-        <button class="govuk-button">Yes, continue</button>
-
-        <p class="govuk-body"><a href="new-recipient">No, try again</a></p>
-
+        <p><a href="new-recipient">No, try again</a></p>
       </form>
 
     </div>

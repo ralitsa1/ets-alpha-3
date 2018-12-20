@@ -17,57 +17,44 @@ input, select { display: block; }
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      <span class="govuk-caption-xl">{{ data['installationName']}}</span>
-      Who do you want to transfer allowance to?
-    </h1>
+    <form class="form" action="confirm-new-recipient" method="post">
+      {% call govukFieldset({
+        legend: {
+          html: "<span class='govuk-caption-xl'>" + data['ets-transfer-allowance']['installation'] + "</span>Who do you want to transfer allowance to?",
+          classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6",
+          isPageHeading: true
+        }
+      }) %}
 
-<fieldset class="govuk-fieldset">
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+      {{ govukInput({
+        label: {
+          text: "Installation ID of recipient"
+        },
+        hint: {
+          text: "eg 'EU-100-47639-0-78'"
+        },
+        id: "recepient-id",
+        name: "ets-transfer-allowance[recepient-id]",
+        classes: 'govuk-input--width-10',
+        value: data['ets-transfer-allowance']['recepient-id']
+      }) }}
 
+      {{ govukDetails({
+        summaryText: "Help with installation ID",
+        text: "The person you are transferring to should provide you with an installaion ID. This can be found in the Settings of their accounts."
+      }) }}
 
-<form class="form" action="confirm-new-recipient" method="post">
+      {{ govukButton({
+        text: "Search for recipient"
+      }) }}
 
-  </legend>
-
-  <div class="govuk-form-group">
-
-    <label class="govuk-label" for="recepient-name">
-      Installation ID of recipient
-    </label>
-    <span id="ID-hint" class="govuk-hint">
-      eg 'EU-100-47639-0-78'
-    </span>
-
-    <input class="govuk-input govuk-input--width-10" id="recipient-name" name="recipient-name" type="text" value="{{ data['recipient-name'] }}">
-
-
-
-  </div>
-
-  <details class="govuk-details">
-    <summary class="govuk-details__summary">
-      <span class="govuk-details__summary-text">
-        Help with installation ID
-      </span>
-    </summary>
-    <div class="govuk-details__text">
-      The person you are transferring to should provide you with an installaion ID. This can be found in the Settings of their accounts.
-    </div>
-  </details>
-
-
-  <button class="govuk-button" >Search for recipient</button>
-{{ govukInput({
-      name: "recipient-type",
-      type: 'hidden',
-      value: 'new'
-    }) }}
-</form>
-</fieldset>
-
-
-
+      {{ govukInput({
+        name: "ets-transfer-allowance[recipient-type]",
+        type: 'hidden',
+        value: 'new'
+      }) }}
+      {% endcall %}
+    </form>
   </div>
   {% include "includes/sidebar.html" %}
 </div>

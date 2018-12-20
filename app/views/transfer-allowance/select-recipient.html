@@ -14,44 +14,42 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
    <h1 class="govuk-heading-xl">
-      <span class="govuk-caption-xl">{{ data['installationName'] }}</span>
+      <span class="govuk-caption-xl">{{ data['ets-transfer-allowance']['installation'] }}</span>
     Which installation do you want to transfer allowance to?
     </h1>
     
     <form class="form" action="select-recipient-answer" method="post">
+      {{ govukRadios({
+        idPrefix: "select-recipient",
+        name: "ets-transfer-allowance[select-recipient]",
+        fieldset: {},
+        items: [
+          {
+            value: "existing",
+            text: "Existing recipient",
+            hint: {
+              text: "You saved this recipient before or it's an installation you manage."
+            },
+            checked: checked("['ets-transfer-allowance']['select-recipient']",'existing')
+          },
+          {
+            value: "new",
+            text: "New recipient",
+            hint: {
+              text: "You have not saved this recipient before."
+            },
+            checked: checked("['ets-transfer-allowance']['select-recipient']",'new')
+          }
+        ]
+      }) }}
 
-  <div class="govuk-form-group">
-    <fieldset class="govuk-fieldset">
+      {{ govukButton({
+        text: "Continue"
+      }) }}
 
-    <div class="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="whichtransfer-1" name="whichtransfer" type="radio" value="Existing installation" {{ checked ('whichtransfer', 'Existing installation')}}>
-        <label class="govuk-label govuk-radios__label " for="whichtransfer-1">
-          Existing recipient
-        </label>
-        <span id="sign-in-1-item-hint" class="govuk-hint govuk-radios__hint">
-          You saved this recipient before or it's an installation you manage.
-        </span>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="whichtransfer-2" name="whichtransfer" type="radio" value="New installation" {{ checked ('whichtransfer', 'New installation')}}>
-        <label class="govuk-label govuk-radios__label " for="whichtransfer-2">
-          New recipient
-        </label>
-        <span id="sign-in-1-item-hint" class="govuk-hint govuk-radios__hint">
-          You have not saved this recipient before.
-        </span>
-      </div>
-          </fieldset>
-        </div>
-
-
-<button class="govuk-button">Continue</button>
-
-</form>
-
-</div>
-{% include "includes/sidebar.html" %}
+    </form>
+  </div>
+  {% include "includes/sidebar.html" %}
 </div>
 
 

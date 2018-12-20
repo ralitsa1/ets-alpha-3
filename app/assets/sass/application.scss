@@ -21,12 +21,15 @@ $govuk-global-styles: true;
 .show-hide-inset-text {
   display:none;
 }
-.govuk-button--as-link{
-  background: govuk-colour('white');
-  border: 0;
-  color: $govuk-link-colour;
+.govuk-button--as-link {
+  &:link, &:active, &:visited, &:hover {
+    background: govuk-colour('white');
+    border: 0;
+    color: $govuk-link-colour;
+  }
   display: inline-block;
   margin-bottom: 15px;
+  box-shadow: none;
   @include govuk-media-query($from: desktop) {
     padding-top: 10px;
     margin-bottom: 0;
