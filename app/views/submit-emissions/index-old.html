@@ -1,11 +1,10 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Surrender emissions allowance (ETS)
+  Submit emissions data for ETS
 {% endblock %}
 
 {% block header %}
-  <!-- Blank header with no service name for the start page -->
   {{ govukHeader() }}
 {% endblock %}
 
@@ -33,12 +32,12 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        {% if serviceName %} {{ serviceName }} {% endif %}
+        Submit emissions data for ETS
       </h1>
 
       <p>You need to submit your emission data and get them verified by 31 March.</p>
 
-      <a href="/email-submit" role="button" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8">Start now</a>
+      <a href="login" role="button" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8">Start now</a>
 
       <h2 class="govuk-heading-m">Before you start</h2>
 

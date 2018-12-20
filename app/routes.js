@@ -49,6 +49,11 @@ router.get('/transfer-allowance/:page', function (req, res, next) {
   next()
 })
 
+router.get('/submit-emissions/:page', function (req, res, next) {
+  res.locals['serviceName'] = 'Submit emissions data for ETS'
+  next()
+})
+
 router.get('/account/', function (req, res, next) {
   res.locals['serviceName'] = 'Account'
   res.locals['currentDate'] = Date.now()
