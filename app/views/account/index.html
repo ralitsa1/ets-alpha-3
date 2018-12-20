@@ -78,7 +78,29 @@
 	{% endif %}
 	{% endfor %}
 </div>
-	 {% if data['ets-submit-emmissions'] %}
+{% if data['ets-submit-emmissions'] %}
+  <div class="govuk-grid-row">
+	<div class="govuk-grid-column-three-quarters">
+		<h1 class="govuk-heading-xl">{{ data['ets-submit-emmissions']['installation'] }} </h1>
+	</div>
+	<div class="govuk-grid-column-one-quarter">
+		<aside class="app-related-items" role="complementary">
+			<h2 class="govuk-heading-s" id="subsection-title">
+				Tasks
+			</h2>
+			<nav role="navigation" aria-labelledby="subsection-title">
+				<ul class="govuk-list govuk-!-font-size-16">
+					<li>
+					<a href="/transaction-history-transfer">
+							View installation history
+					</a>
+					</li>
+					<li><a href="/submit-emissions/select-installation">Make another submission</a></li>
+				</ul>
+			</nav>
+		</aside>
+	</div>
+	 <div class="govuk-grid-column-full">
 		<h2 class="govuk-heading-l">Recent submissions</h2>
 		<table class="govuk-table">
 		<thead class="govuk-table__head">
@@ -127,6 +149,7 @@
 			</tr>
 		</tbody>
 		</table>
-
-	{% endif %}
+    </div>
+  </div>
+{% endif %}
 {% endblock %}
