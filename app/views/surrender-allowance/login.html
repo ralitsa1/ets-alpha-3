@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  What's your email address?
+  Log in
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="/start-surrender">Back</a>
+  <a class="govuk-back-link" href="index">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -17,9 +17,7 @@
       </h1>
 
 
-      <form class="form" action="/2fa-surrender" method="post">
-
-        {% from "input/macro.njk" import govukInput %}
+      <form class="form" action="2fa" method="post">
 
         {{ govukInput({
           label: {

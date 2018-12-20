@@ -42,3 +42,13 @@ $govuk-global-styles: true;
     }
   }
 }
+
+.govuk-table__row {
+  &--strong-border {
+    border-bottom: 2px solid govuk-colour('black')
+  }
+  .govuk-table__cell-hint {
+    color: govuk-colour("grey-1");
+    font-weight: normal;
+  }
+}
