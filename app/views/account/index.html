@@ -70,8 +70,6 @@
           </tr>
         </tbody>
       </table>
-    {% else %}
-      No data just yet.
     {% endif %}
     {% if data['ets-surrender-allowance'] and data['ets-surrender-allowance']['installation'] == installation %}
     <h2 class="govuk-heading-l">Recent surrenders</h2>
@@ -112,8 +110,6 @@
           </tr>
         </tbody>
       </table>
-    {% else %}
-      No data just yet.
     {% endif %}
     {% if data['ets-submit-emmissions'] and data['ets-submit-emmissions']['installation'] == installation %}
       <h2 class="govuk-heading-l">Recent submissions</h2>
@@ -164,8 +160,10 @@
           </tr>
         </tbody>
       </table>
-    {% else %}
-      No data just yet.
+    {% endif %}
+
+    {% if not data['ets-transfer-allowance'] or not data['ets-surrender-allowance'] or not ['ets-submit-emmissions'] %}
+     <p>No data just yet.</p>
     {% endif %}
   </div>
 </div>
