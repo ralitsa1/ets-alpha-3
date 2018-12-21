@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+  Emissions Trading System Alpha
 {% endblock %}
 
 {% block content %}
@@ -10,19 +10,19 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        The GOV.UK Prototype Kit
-        <span class="govuk-caption-xl">{{releaseVersion}}</span>
+        Emissions Trading System 
+        <span class="govuk-caption-xl">Alpha prototype</span>
       </h1>{{releaseVersion | log }}
       <p>
-        This kit lets you rapidly create HTML prototypes of GOV.UK services.
+        Choose a task from below.
       </p>
 
       <ul class="govuk-list govuk-list--bullet">
-        <li><a href="/submit-emissions/">Submit emissions journey</a>
+        <li><a href="/submit-emissions/">Submit emissions</a>
         </li>
-        <li><a href="/surrender-allowance/">Surrender allowance journey</a>
+        <li><a href="/surrender-allowance/">Surrender allowance</a>
         </li>
-        <li><a href="/transfer-allowance/">Transfer allowance journey</a>
+        <li><a href="/transfer-allowance/">Transfer allowance</a>
         </li>
         <li><a href="/apply-for-an-account/">Apply for an ETS account</a>
         </li>
