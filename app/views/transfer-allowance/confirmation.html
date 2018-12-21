@@ -5,8 +5,8 @@
 {% for item in data['installations'] %}
   {% if selectedInstallation == (item.name) | trim %}
     {% set installationID = item.permitId %}
-    {% endif %}
-  {% endfor %}
+  {% endif %}
+{% endfor %}
 {% set mainClasses = "govuk-main-wrapper--l" %}
 {% block pageTitle %}
   Confirmation page
@@ -30,7 +30,7 @@
         </div>
       </div>
       {{ govukInsetText({
-        html: "Visit account page to <a class='govuk-link' href='/account/" + installationID +"'>check the transaction</a>"
+        html: "Visit account page to <a class='govuk-link' href='/account/" + installationID +"'>check the transaction</a>."
       }) }}
       <h2 class="govuk-heading-m"> What happens next</h2>
       {% if recipientType == 'existing' %}

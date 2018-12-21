@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
-
+{% set selectedInstallation = data['ets-submit-emmissions']['installation'] | trim %}
+{% set installationID = '' %}
+{% for item in data['installations'] %}
+  {% if selectedInstallation == (item.name) | trim %}
+    {% set installationID = item.permitId %}
+  {% endif %}
+{% endfor %}
 <!-- Adds a class to increase vertical spacing for pages without a back button -->
 {% set mainClasses = "govuk-main-wrapper--l" %}
 
@@ -20,7 +26,7 @@
       </div>
 
       {{ govukInsetText({
-        html: "Visit account page to <a class='govuk-link' href='/account/'>check the transaction</a>"
+        html: "Visit account page to <a class='govuk-link' href='/account/" + installationID +"'>check the transaction</a>."
       }) }}
       <h2 class="govuk-heading-m">What happens next</h2>
       <p class="govuk-body">We have sent you a confirmation email.</p>
