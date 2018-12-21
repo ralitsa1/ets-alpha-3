@@ -32,7 +32,6 @@ router.get('/account/:id', function (req, res, next) {
   res.locals['currentDate'] = Date.now()
   res.locals['installationID'] = req.params.id
   res.render('account/index')
-  next()
 })
 
 router.post('/transfer-allowance/select-recipient-answer', function (req, res) {
