@@ -31,6 +31,10 @@ router.get('/account/:id', function (req, res, next) {
   res.locals['serviceName'] = 'Account'
   res.locals['currentDate'] = Date.now()
   res.locals['installationID'] = req.params.id
+
+  if (req.query.view === 'history') {
+    res.locals['showTransactionHistory'] = true
+  }
   res.render('account/index')
 })
 
