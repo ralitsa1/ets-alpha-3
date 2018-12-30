@@ -18,7 +18,9 @@
 			</h2>
 			<nav role="navigation" aria-labelledby="subsection-title">
 				<ul class="govuk-list govuk-!-font-size-16">
-					<li><a href="{{installationID}}?view=history">View installation history</a></li>
+          <li><a href="/account/{{installationID}}?view=transaction">Account home</a></li>
+					<li><a href="/account/{{installationID}}?view=transactionHistory">View installation history</a></li>
+          <li><a href="/account/{{installationID}}?view=representatives">View representatives</a></li>
 					<li><a href="/transfer-allowance/2fa">Transfer more allowance</a></li>
           <li><a href="/surrender-allowance/2fa">Surrender more allowance</a></li>
           <li><a href="/submit-emissions/2fa">Submit emissions</a></li>
@@ -29,6 +31,7 @@
 </div>
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
+  {% if pageView == 'transaction' %}
     {% if data['emissionAllowance'] and data['ets-transfer-allowance']['installation'] == installation %} 
       <h2 class="govuk-heading-l">Recent transfers</h2>
       <table class="govuk-table">
@@ -161,8 +164,9 @@
         </tbody>
       </table>
     {% endif %}
+  {% endif %}
 
-    {% if showTransactionHistory %}
+    {% if pageView == 'transactionHistory' %}
       <h2 class="govuk-heading-l">Installation history</h2>
 
       {{ govukRadios({
@@ -532,6 +536,25 @@
         </tbody>
       </table>
 
+    {% endif %}
+
+    {% if pageView == 'representatives' %}
+      {% if data['new-authorised-representatives'] | length == 0 %}
+        <p>You currently have no authorised representatives.</p>
+      {% else %}
+        <h2 class="govuk-heading-m">Your authorised representatives</h2>
+        <ul class='govuk-list'>
+        {% for item, name in data['new-authorised-representatives'] %}
+          <li>{{name}}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+      <form class="form" action="/add-a-new-authorised-representative/representative-details" method="post">
+      {{ govukButton({
+        text: "Add a new authorised representative"
+      }) }}
+      <input type="hidden" name="new-linked-representative[installation]" value='{{installation}}'>
+      </form>
     {% endif %}
   </div>
 </div>

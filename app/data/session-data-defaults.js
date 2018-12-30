@@ -59,6 +59,47 @@ module.exports = {
         }
       ]
     }
+  ],
+  'existing-authorised-representatives': [
+    {
+      name: 'Divina Glaser',
+      id: 'EU-66-5684-0-20'
+    },
+    {
+      name: 'Luann Steppe',
+      id: 'EU-66-5684-0-21'
+    },
+    {
+      name: 'Jimmy Pressly',
+      id: 'EU-66-5684-0-22'
+    },
+    {
+      name: 'Tyra Lucas',
+      id: 'EU-66-5684-0-23'
+    },
+    {
+      name: 'Terisa Pritchett',
+      id: 'EU-66-5684-0-24'
+    },
+    {
+      name: 'Cecille Irving',
+      id: 'EU-66-5684-0-25'
+    },
+    {
+      name: 'Elna Kraushaar',
+      id: 'EU-66-5684-0-26'
+    },
+    {
+      name: 'Luella Hover',
+      id: 'EU-66-5684-0-27'
+    },
+    {
+      name: 'Eloisa Albert',
+      id: 'EU-66-5684-0-28'
+    },
+    {
+      name: 'Fatimah Huffines',
+      id: 'EU-66-5684-0-29'
+    }
   ]
-
 }
