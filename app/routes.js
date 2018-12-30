@@ -31,11 +31,13 @@ router.get('/account/:id', function (req, res, next) {
   res.locals['serviceName'] = 'Account'
   res.locals['currentDate'] = Date.now()
   res.locals['installationID'] = req.params.id
-
-  if (req.query.view === 'history') {
-    res.locals['showTransactionHistory'] = true
-  }
+  res.locals['pageView'] = req.query.view
   res.render('account/index')
+})
+
+router.get('/add-a-new-authorised-representative/:page', function (req, res, next) {
+  res.locals['serviceName'] = 'New authorised representative'
+  next()
 })
 
 router.post('/transfer-allowance/select-recipient-answer', function (req, res) {
@@ -82,6 +84,17 @@ router.post('/surrender-allowance/surrender-amount-answer', function (req, res) 
 
   if (amountToSurrender === 'other') {
     res.redirect('confirm-oversurrender')
+  } else {
+    res.redirect('confirmation')
+  }
+})
+
+router.post('/add-a-new-authorised-representative/rep-details-answer', function (req, res, next) {
+  var isExistingEtsUser = req.session.data['new-linked-representative']['existing-ets-user']
+  var existingUserId = req.session.data['new-linked-representative']['existing-ets-user-id']
+
+  if (isExistingEtsUser === 'yes' && existingUserId !== '') {
+    res.redirect('check-respresentative-details')
   } else {
     res.redirect('confirmation')
   }
