@@ -1,13 +1,13 @@
 const express = require('express')
 const router = express.Router()
 
-// new routes
-router.get('/*', function (req, res, next) {
+// make available for all routes
+router.use(function (req, res, next) {
   if (!req.session.data.newAuthorisedReps) {
-    req.session.data.newAuthorisedReps = [] // array to be available on all routes
+    req.session.data.newAuthorisedReps = []
   }
   if (!req.session.data.newTrustedAccounts) {
-    req.session.data.newTrustedAccounts = [] // array to be available on all routes
+    req.session.data.newTrustedAccounts = []
   }
   next()
 })
