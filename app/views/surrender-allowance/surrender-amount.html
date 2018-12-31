@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
-
+{% set installationName = data['ets-surrender-allowance']['installation'] %}
+{% set installationID = '' %}
+{% for item in data['installations'] %}
+  {% if installationName == (item.name) | trim %}
+    {% set installationID = item.permitId %}
+  {% endif %}
+{% endfor %}
 {% block pageTitle %}
   Surrender your 2018 emission allowance
 {% endblock %}
@@ -13,7 +19,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-            <span class="govuk-caption-xl">{{ data['ets-surrender-allowance']['installation']}}</span>
+            <span class="govuk-caption-xl">{{ installationName }}</span>
         Surrender your 2018 emission allowance
       </h1>
       <form class="form" action="surrender-amount-answer" method="post">
@@ -29,7 +35,7 @@
               <tr class="govuk-table__row govuk-table__row--strong-border">
                 <th class="govuk-table__header" scope="row">
                   Your credit<br>
-                  <span class="govuk-table__cell-hint">You surrendered too much last year. <a href="/transaction-history-transfer">Learn why</a></span>
+                  <span class="govuk-table__cell-hint">You surrendered too much last year. <a href='/account/{{installationID}}?view=transactionHistory'>Learn why</a></span>
                 </th>
                 <td class="govuk-table__cell govuk-table__cell--numeric">320</td>
               </tr>
