@@ -21,6 +21,7 @@
           <li><a href="/account/{{installationID}}?view=transaction">Account home</a></li>
 					<li><a href="/account/{{installationID}}?view=transactionHistory">View installation history</a></li>
           <li><a href="/account/{{installationID}}?view=representatives">View representatives</a></li>
+          <li><a href="/account/{{installationID}}?view=trustedAccounts">View trusted accounts</a></li>
 					<li><a href="/transfer-allowance/2fa">Transfer more allowance</a></li>
           <li><a href="/surrender-allowance/2fa">Surrender more allowance</a></li>
           <li><a href="/submit-emissions/2fa">Submit emissions</a></li>
@@ -554,6 +555,25 @@
         text: "Add a new authorised representative"
       }) }}
       <input type="hidden" name="new-linked-representative[installation]" value='{{installation}}'>
+      </form>
+    {% endif %}
+
+    {% if pageView == 'trustedAccounts' %}
+      {% if data['newTrustedAccounts'] | length == 0 %}
+        <p>You currently have no trusted accounts.</p>
+      {% else %}
+        <h2 class="govuk-heading-m">Your trusted accounts</h2>
+        <ul class='govuk-list'>
+        {% for name in data['newTrustedAccounts'] %}
+          <li>{{name}}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+      <form class="form" action="/add-a-new-trusted-account/account-details" method="post">
+      {{ govukButton({
+        text: "Add a new trusted account"
+      }) }}
+      <input type="hidden" name="new-trusted-account[installation]" value='{{installation}}'>
       </form>
     {% endif %}
   </div>
