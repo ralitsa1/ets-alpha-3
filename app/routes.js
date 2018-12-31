@@ -2,6 +2,13 @@ const express = require('express')
 const router = express.Router()
 
 // new routes
+router.get('/*', function (req, res, next) {
+  if (!req.session.data.newAuthorisedReps) {
+    req.session.data.newAuthorisedReps = [] // array to be available on all routes
+  }
+  next()
+})
+
 router.get('/apply-for-an-account/:page', function (req, res, next) {
   res.locals['serviceName'] = 'Apply for an ETS account'
   next()
@@ -91,13 +98,22 @@ router.post('/surrender-allowance/surrender-amount-answer', function (req, res) 
 
 router.post('/add-a-new-authorised-representative/rep-details-answer', function (req, res, next) {
   var isExistingEtsUser = req.session.data['new-linked-representative']['existing-ets-user']
-  var existingUserId = req.session.data['new-linked-representative']['existing-ets-user-id']
+  var existingUserId = req.session.data['new-linked-representative']['id']
 
-  if (isExistingEtsUser === 'yes' && existingUserId !== '') {
+  if (isExistingEtsUser === 'yes' && existingUserId !== ' ') {
     res.redirect('check-respresentative-details')
   } else {
     res.redirect('confirmation')
   }
+})
+
+router.post('/add-a-new-authorised-representative/confirmation', function (req, res, next) {
+  var newAuthorisedRepName = req.session.data['new-authorised-representatives']['name']
+  var newAuthorisedReps = req.session.data.newAuthorisedReps
+  if (!newAuthorisedReps.includes(newAuthorisedRepName)) {
+    req.session.data.newAuthorisedReps.push(newAuthorisedRepName)
+  }
+  next()
 })
 
 module.exports = router

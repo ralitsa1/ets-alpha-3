@@ -539,12 +539,12 @@
     {% endif %}
 
     {% if pageView == 'representatives' %}
-      {% if data['new-authorised-representatives'] | length == 0 %}
+      {% if data['newAuthorisedReps'] | length == 0 %}
         <p>You currently have no authorised representatives.</p>
       {% else %}
         <h2 class="govuk-heading-m">Your authorised representatives</h2>
         <ul class='govuk-list'>
-        {% for item, name in data['new-authorised-representatives'] %}
+        {% for name in data['newAuthorisedReps'] %}
           <li>{{name}}</li>
         {% endfor %}
         </ul>
