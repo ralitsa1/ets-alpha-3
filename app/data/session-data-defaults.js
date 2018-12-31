@@ -101,5 +101,43 @@ module.exports = {
       name: 'Fatimah Huffines',
       id: 'EU-66-5684-0-29'
     }
+  ],
+  'existing-accounts': [
+    {
+      name: 'National Grid Gas plc',
+      id: 'EU-100-8976-0-88'
+    },
+    {
+      name: 'Conoco Phillips',
+      id: 'EU-100-82543-0-87'
+    },
+    {
+      name: 'Dalkia Utilities Services',
+      id: 'EU-100-625343-0-99'
+    },
+    {
+      name: 'Perenco UK Ltd',
+      id: 'EU-100-11674-0-56'
+    },
+    {
+      name: 'Polimeri Europa UK Limited',
+      id: 'EU-100-77732-0-76'
+    },
+    {
+      name: 'De La Rue International Ltd',
+      id: 'EU-100-63522-0-03'
+    },
+    {
+      name: 'E.ON UK CHP Ltd',
+      id: 'EU-100-99924-0-23'
+    },
+    {
+      name: 'Citigen (London) Ltd',
+      id: 'EU-100-38476-0-24'
+    },
+    {
+      name: 'Procter & Gamble Product Supply (UK) Ltd',
+      id: 'EU-100-4847-0-25'
+    }
   ]
 }

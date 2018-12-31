@@ -6,6 +6,9 @@ router.get('/*', function (req, res, next) {
   if (!req.session.data.newAuthorisedReps) {
     req.session.data.newAuthorisedReps = [] // array to be available on all routes
   }
+  if (!req.session.data.newTrustedAccounts) {
+    req.session.data.newTrustedAccounts = [] // array to be available on all routes
+  }
   next()
 })
 
@@ -44,6 +47,18 @@ router.get('/account/:id', function (req, res, next) {
 
 router.get('/add-a-new-authorised-representative/:page', function (req, res, next) {
   res.locals['serviceName'] = 'New authorised representative'
+  next()
+})
+
+router.get('/add-a-new-trusted-account/:page', function (req, res, next) {
+  res.locals['serviceName'] = 'New trusted account'
+  next()
+})
+
+router.get('/add-a-new-trusted-account/account-details', function (req, res, next) {
+  if (req.query.error) {
+    res.locals['errorExists'] = req.query.error
+  }
   next()
 })
 
@@ -112,6 +127,26 @@ router.post('/add-a-new-authorised-representative/confirmation', function (req, 
   var newAuthorisedReps = req.session.data.newAuthorisedReps
   if (!newAuthorisedReps.includes(newAuthorisedRepName)) {
     req.session.data.newAuthorisedReps.push(newAuthorisedRepName)
+  }
+  next()
+})
+
+router.post('/add-a-new-trusted-account/account-details-answer', function (req, res, next) {
+  var newTrustedAccountId = req.session.data['new-trusted-account']['id'] || ' '
+  var doesItemExist = req.session.data['existing-accounts'].find(o => o.id === newTrustedAccountId) || false
+
+  if (newTrustedAccountId !== ' ' && doesItemExist) {
+    res.redirect('check-account-details')
+  } else {
+    res.redirect('/add-a-new-trusted-account/account-details?error=true')
+  }
+})
+
+router.post('/add-a-new-trusted-account/confirmation', function (req, res, next) {
+  var newTrustedAccount = req.session.data['new-trusted-account']['name']
+  var newTrustedAccounts = req.session.data.newTrustedAccounts
+  if (!newTrustedAccounts.includes(newTrustedAccount)) {
+    req.session.data.newTrustedAccounts.push(newTrustedAccount)
   }
   next()
 })
