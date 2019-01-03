@@ -12,12 +12,36 @@
 
 
 {% block content %}
-<p>Add <strong>{{accountDetails}}</strong> as your trusted account.</p>
+<h1 class="govuk-heading-xl">Add a trusted account</h1>
 <form class="form" action="confirmation" method="post">
+{{ govukInput({
+  label: {
+    text: "Name of the account"
+  },
+  hint: {
+    text: "Give this account a memorable name"
+  },
+  id: "nickname",
+  name: "new-trusted-account[account-nickname]",
+  classes: 'govuk-!-width-one-third'
+}) }}
+
+{{ govukTextarea({
+  name: "new-trusted-account[account-notes]",
+  id: "account-notes",
+  label: {
+    text: "Optional account notes"
+  },
+  hint: {
+    text: "Write notes that may help you with this trusted account in the future.",
+    classes: 'govuk-!-width-one-third'
+  },
+  classes: 'govuk-!-width-one-third'
+}) }}
+
 {{ govukButton({
     text: "Add as a trusted account"
 }) }}
-<input type="hidden" name="new-trusted-account[name]" value='{{accountDetails}}'>
 </form>
  
 {% endblock %}

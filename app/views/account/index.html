@@ -563,9 +563,9 @@
         <p>You currently have no trusted accounts.</p>
       {% else %}
         <h2 class="govuk-heading-m">Your trusted accounts</h2>
-        <ul class='govuk-list'>
-        {% for name in data['newTrustedAccounts'] %}
-          <li>{{name}}</li>
+        <ul class='govuk-list govuk-list--bullet'>
+        {% for item in data['newTrustedAccounts'] %}
+          <li>{{item.nickname}}{% if item.note %} <br/> <i>{{item.note}}</i>{% endif %}</li>
         {% endfor %}
         </ul>
       {% endif %}
