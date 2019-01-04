@@ -13,6 +13,7 @@
 
 {% block content %}
 <h1 class="govuk-heading-xl">Add a trusted account</h1>
+<p class="govuk-body-l">Add <strong>{{data['new-trusted-account']['id']}}</strong> as your trusted account.</p>
 <form class="form" action="confirmation" method="post">
 {{ govukInput({
   label: {
@@ -23,7 +24,7 @@
   },
   id: "nickname",
   name: "new-trusted-account[account-nickname]",
-  classes: 'govuk-!-width-one-third'
+  classes: 'govuk-!-width-two-thirds'
 }) }}
 
 {{ govukTextarea({
@@ -36,7 +37,7 @@
     text: "Write notes that may help you with this trusted account in the future.",
     classes: 'govuk-!-width-one-third'
   },
-  classes: 'govuk-!-width-one-third'
+  classes: 'govuk-!-width-two-thirds'
 }) }}
 
 {{ govukButton({
