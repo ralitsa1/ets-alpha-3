@@ -146,10 +146,16 @@ router.post('/add-a-new-trusted-account/account-details-answer', function (req, 
 })
 
 router.post('/add-a-new-trusted-account/confirmation', function (req, res, next) {
-  var newTrustedAccount = req.session.data['new-trusted-account']['name']
+  var newTrustedAccountId = req.session.data['new-trusted-account']['id']
+  var newTrustedAccountDetails = {
+    id: newTrustedAccountId,
+    nickname: req.session.data['new-trusted-account']['account-nickname'],
+    note: req.session.data['new-trusted-account']['account-notes']
+  }
   var newTrustedAccounts = req.session.data.newTrustedAccounts
-  if (!newTrustedAccounts.includes(newTrustedAccount)) {
-    req.session.data.newTrustedAccounts.push(newTrustedAccount)
+  var doesItemExist = newTrustedAccounts.find(o => o.id === newTrustedAccountId) || false
+  if (!doesItemExist) {
+    req.session.data.newTrustedAccounts.push(newTrustedAccountDetails)
   }
   next()
 })
