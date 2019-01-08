@@ -1,0 +1,48 @@
+{% extends "layouts/admin/base.html" %}
+
+{% set pageID = "your-cases" %}
+
+{% block pageTitle %}Your cases {{'- ' + serviceName}}{% endblock %}
+
+{% block content %}
+
+<div class="jui-width-container">
+
+  <main class="govuk-main-wrapper" role="main">
+
+    {% if success %}
+      {{ hmctsBanner({
+          type: 'success',
+          text: success,
+          iconFallbackText: 'Success'
+        }) }}
+    {% endif %}
+
+    {{ hmctsPageHeaderWithActions({
+      title: {
+        html: '<h1 class="govuk-heading-xl">Your cases</h1>'
+      },
+      items: [{
+        text: 'Get new case',
+        href: './get-new-case'
+      }]
+    }) }}
+
+    {{ govukTable({
+        firstCellIsHeader: true,
+        head: [
+          {text: 'Case number'},
+          {text: 'Parties'},
+          {text: 'Type'},
+          {text: 'Decision needed on'},
+          {text: 'Case received'},
+          {text: 'Date of last event'}
+        ],
+        rows: caseList
+      }) }}
+
+  </main>
+
+</div>
+
+{% endblock %}

@@ -37,6 +37,7 @@ router.get('/surrender-allowance/:page', function (req, res, next) {
   next()
 })
 
+/*
 router.get('/account/:id', function (req, res, next) {
   res.locals['serviceName'] = 'Account'
   res.locals['currentDate'] = Date.now()
@@ -44,6 +45,8 @@ router.get('/account/:id', function (req, res, next) {
   res.locals['pageView'] = req.query.view
   res.render('account/index')
 })
+*/
+
 
 router.get('/add-a-new-authorised-representative/:page', function (req, res, next) {
   res.locals['serviceName'] = 'New authorised representative'

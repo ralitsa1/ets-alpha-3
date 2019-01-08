@@ -1,8 +1,11 @@
 // global styles for <a> and <p> tags
 $govuk-global-styles: true;
 
+$hmcts-page-width: 1220px;
+
 // Import GOV.UK Frontend
 @import "node_modules/govuk-frontend/all";
+@import "node_modules/@hmcts/frontend/all";
 
 // Patterns that aren't in Frontend
 @import "patterns/check-your-answers";
@@ -15,6 +18,9 @@ $govuk-global-styles: true;
 @import "components/accessible-autocomplete";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+//
+// JUI styles
+@import "jui/all";
 
 //contact-details page in /apply-for-an-account
 

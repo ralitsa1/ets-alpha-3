@@ -1,8 +1,21 @@
 <!-- Javascript -->
 <script src="/public/javascripts/jquery-1.11.3.js"></script>
 <script src="/node_modules/govuk-frontend/all.js"></script>
+<script src="/node_modules/hmcts-frontend/all.js"></script>
 <script src="/public/javascripts/application.js"></script>
 
 {% if useAutoStoreData %}
   <script src="/public/javascripts/auto-store-data.js"></script>
 {% endif %}
+
+<script>
+  new HMCTSFrontend.SearchToggleButton({
+    toggleButton: {
+      container: $('.hmcts-search-toggle__toggle'),
+      text: 'Find account'
+    },
+    search: {
+      container: $('.hmcts-search')
+    }
+  });
+</script>
