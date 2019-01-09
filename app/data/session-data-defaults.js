@@ -20,6 +20,13 @@ Example usage:
 module.exports = {
 
   // Insert values here
+      'accountsNavItems': [
+				{
+					href: '',
+					text: 'Summary',
+					active: 'false'
+				}
+			],
   'installations': [
     {
       'name': 'Nevern Power Limited',

@@ -20,7 +20,7 @@
 
     {{ hmctsPageHeaderWithActions({
       title: {
-        html: '<h1 class="govuk-heading-xl">Your cases</h1>'
+        html: '<h1 class="govuk-heading-xl">Your accounts</h1>'
       },
       items: [{
         text: 'Get new case',
@@ -31,15 +31,17 @@
     {{ govukTable({
         firstCellIsHeader: true,
         head: [
-          {text: 'Case number'},
-          {text: 'Parties'},
+          {text: 'Account'},
+          {text: '--'},
           {text: 'Type'},
-          {text: 'Decision needed on'},
-          {text: 'Case received'},
-          {text: 'Date of last event'}
+          {text: 'Status'},
+          {text: '---'},
+          {text: '---'}
         ],
-        rows: caseList
+        rows: data['installations']
       }) }}
+
+      <a href="/account/">Scunthorpe Integrated Iron & Steel Works</a>
 
   </main>
 

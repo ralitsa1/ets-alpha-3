@@ -1,100 +1,247 @@
-{% extends "layouts/admin/base.html" %}
+{% extends "layouts/admin/base-account.html" %}
 
 {% block pageTitle %}Summary {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
-{{ hmctsIdentityBar({
-  title: {
-    html: casebar.parties + ' <span class="jui-status  jui-status--new  govuk-!-margin-left-1">Reserved to Judge Shah</span>'
-    },
-  items: [
-    {
-      text: 'Make a decision',
-      href: '/app/cases/'+_case.id+'/fr/decision'
-    },
-    {
-      text: 'Reassign',
-      href: '/app/cases/'+_case.id+'/fr/reassign',
-      classes: 'hmcts-button--secondary'
-    },
-    {
-      text: 'Reserve',
-      href: '/app/cases/'+_case.id+'/fr/reserve',
-      classes: 'hmcts-button--secondary'
-    }
-  ]
-}) }}
-
-<div class="jui-width-container">
-
-  <main class="govuk-main-wrapper" role="main">
-
-    {% set bannerHtml %}
-      <h2 class="govuk-heading-m">This case has been reassigned to you by Jane Doe</h2>
-      <p><a href="#">Dismiss</a></p>
-    {% endset %}
-
-    {{ hmctsBanner({
-      html: bannerHtml
-    }) }}
-
-    {{ hmctsSubNavigation({
-      label: 'Case navigation',
-      items: caseNavItems
-    }) }}
-
-    <h1 class="hmcts-page-heading__title govuk-heading-xl">Summary</h1>
-
-    <div class="govuk-grid-row">
-
-      <div class="govuk-grid-column-two-thirds">
-
-
-
-        <h2 class="govuk-heading-m  govuk-!-margin-bottom-2">Case details</h2>
-
-        {{ govukTable({
-          classes: 'govuk-!-margin-bottom-7  jui-table  jui-table--fixed',
-          firstCellIsHeader: false,
-          rows: detailsRows
-        }) }}
-
-        {# <h2 class="govuk-heading-m  govuk-!-margin-bottom-2">Linked cases</h2>
-
-        {{ govukTable({
-          classes: 'govuk-!-margin-bottom-7  jui-table  jui-table--fixed',
-          firstCellIsHeader: false,
-          rows: linkedCaseRows
-        }) }} #}
-
-      </div>
-
-      <div class="govuk-grid-column-one-third">
-
-        <h2 class="govuk-heading-m  govuk-!-margin-bottom-4">Recent events</h2>
-
-        {% if recentEvents.length %}
-
-          {{hmctsTimeline({
+          {{ hmctsTimeline({
             headingLevel: 3,
-            events: recentEvents
+            events: data['recentEvents']
           })}}
 
-          <p><a href="/app/cases/{{_case.id}}/fr/timeline">View full timeline</a></p>
+          <!--
+    {{ hmctsSubNavigation({
+      items: data['accountsNavItems']
+    }) }}
+          -->
 
-        {% else %}
+      <h2 class="govuk-heading-m">Holdings</h2>
+      <P>You have <strong>2500</strong> units. You need to surrender <strong>2160</strong> units by 20 April 2019.</p>
+      <h2 class="govuk-heading-m">Compliance History</h2>
+<table class="govuk-table" data-type="compliance-period">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <th class="govuk-table__header" scope="col">Date submitted</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Year</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Emissions reported</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Allowance surrendered</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Balance</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">21 Nov 2012</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2012</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2,938</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2,938</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+          </tr>
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">3 Oct 2013</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2013</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2,480</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2,480</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+          </tr>
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">3 Jul 2014</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2014</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2,960</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">3,050</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">90</td>
+          </tr>
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">1 April 2015</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2015</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2,560</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2,470</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+          </tr>
 
-          <p>No events.</p>
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">1 Sept 2016</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2016</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2,560</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2,470</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+          </tr>
 
-        {% endif %}
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">23 July 2017</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2017</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2,638</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2,638</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">0</td>
+          </tr>
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">21 Oct 2018</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">2018</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">3,059</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">3,000</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">-41</td>
+          </tr>
 
-      </div>
+        </tbody>
+      </table>
 
-    </div>
+      <h2 class="govuk-heading-m">Transaction History</h2>
+<table class="govuk-table" data-type="transactions">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <th class="govuk-table__header" scope="col">Date</th>
+            <th class="govuk-table__header" scope="col">Reference</th>
+            <th class="govuk-table__header " scope="col">Account ID</th>
+            <th class="govuk-table__header" scope="col">Account name</th>
+            <th class="govuk-table__header" scope="col">Unit</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">In</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Out</th>
+            <th class="govuk-table__header" scope="col">State</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">2 Aug 2018</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76398F</td>
+            <td class="govuk-table__cell ">EU-100-77732-0-56</td>
+            <td class="govuk-table__cell" scope="row">DNV GL Business Assurance UK Limited</th>
+            <td class="govuk-table__cell" scope="row">ETS</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">342</td>
+            <td class="govuk-table__cell" scope="row">Approved</th>
+          </tr>
 
-  </main>
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">6 Aug 2018</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76402F</td>
+            <td class="govuk-table__cell ">EU-100-77732-0-26</td>
+            <td class="govuk-table__cell" scope="row">BSI Assurance UK Limited</th>
+            <td class="govuk-table__cell" scope="row">ETS</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">45</td>
+            <td class="govuk-table__cell" scope="row">Pending</th>
+          </tr>
 
-</div>
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">7 Aug 2018</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76401F</td>
+            <td class="govuk-table__cell ">EU-100-77732-0-36</td>
+            <td class="govuk-table__cell" scope="row">DNV GL Business Assurance UK Limited</th>
+            <td class="govuk-table__cell" scope="row">ETS</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">98</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+            <td class="govuk-table__cell" scope="row">Approved</th>
+          </tr>
 
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">3 Sept 2018</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76403F</td>
+            <td class="govuk-table__cell ">EU-100-77732-0-76</td>
+            <td class="govuk-table__cell" scope="row">Polimeri Europa UK Limited</th>
+            <td class="govuk-table__cell" scope="row">ETS</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">344</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+            <td class="govuk-table__cell" scope="row">Proposed</th>
+          </tr>
+
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">15 Sept 2018</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76397F</td>
+            <td class="govuk-table__cell ">EU-100-77732-0-66</td>
+            <td class="govuk-table__cell" scope="row">ERM Certification & Verification Services Ltd</th>
+            <td class="govuk-table__cell" scope="row">ETS</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">144</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+            <td class="govuk-table__cell" scope="row">Pending</th>
+          </tr>
+
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">22 Sept 2018</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76399F</td>
+            <td class="govuk-table__cell ">EU-100-77732-0-46</td>
+            <td class="govuk-table__cell" scope="row">Lynemouth Power Station</th>
+            <td class="govuk-table__cell" scope="row">ETS</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">475</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+            <td class="govuk-table__cell" scope="row">Pending</th>
+          </tr>
+
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">3 Oct 2018</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76400F</td>
+            <td class="govuk-table__cell ">EU-100-77732-0-76</td>
+            <td class="govuk-table__cell" scope="row">Polimeri Europa UK Limited</th>
+            <td class="govuk-table__cell" scope="row">ETS</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">876</td>
+            <td class="govuk-table__cell" scope="row">Proposed</th>
+          </tr>
+
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">4 Oct 2018</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76404F</td>
+            <td class="govuk-table__cell ">EU-100-77732-0-16</td>
+            <td class="govuk-table__cell" scope="row">Scunthorpe Integrated Iron & Steel Works</th>
+            <td class="govuk-table__cell" scope="row">ETS</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">67</td>
+            <td class="govuk-table__cell" scope="row">Approved</th>
+          </tr>
+
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">22 Oct 2018</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76396F</td>
+            <td class="govuk-table__cell ">EU-100-77732-0-86</td>
+            <td class="govuk-table__cell" scope="row">Bureau Veritas Certification Holding SAS - UK Branch</th>
+            <td class="govuk-table__cell" scope="row">ETS</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">405</td>
+            <td class="govuk-table__cell" scope="row">Proposed</th>
+          </tr>
+
+
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">1 Nov 2018</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76405F</td>
+            <td class="govuk-table__cell ">EU-100-77732-0-06</td>
+            <td class="govuk-table__cell" scope="row">Nevern Power Limited</th>
+            <td class="govuk-table__cell" scope="row">ETS</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">976</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+            <td class="govuk-table__cell" scope="row">Pending</th>
+          </tr>
+
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">23 Nov 2018</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76393F</td>
+            <td class="govuk-table__cell ">EU-100-77732-0-76</td>
+            <td class="govuk-table__cell" scope="row">Polimeri Europa UK Limited</th>
+            <td class="govuk-table__cell" scope="row">ETS</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">135</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+            <td class="govuk-table__cell" scope="row">Approved</th>
+          </tr>
+
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">27 Nov 2018</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76394F</td>
+            <td class="govuk-table__cell">EU-100-77732-0-96</td>
+            <td class="govuk-table__cell" scope="row">Lloyd’s Register Quality Assurance Limited</th>
+            <td class="govuk-table__cell" scope="row">ETS</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">745</td>
+            <td class="govuk-table__cell" scope="row">Proposed</th>
+          </tr>
+
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <td class="govuk-table__cell" scope="row">28 Nov 2018</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76395F</td>
+            <td class="govuk-table__cell ">EU-100-77732-0-76</td>
+            <td class="govuk-table__cell" scope="row">Polimeri Europa UK Limited</th>
+            <td class="govuk-table__cell" scope="row">ETS</th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">123</td>
+            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
+            <td class="govuk-table__cell" scope="row">Approved</th>
+          </tr>
+        </tbody>
+      </table>
 {% endblock %}

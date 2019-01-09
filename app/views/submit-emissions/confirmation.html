@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layouts/admin/base-account.html" %}
 {% set selectedInstallation = data['ets-submit-emmissions']['installation'] | trim %}
 {% set installationID = '' %}
 {% for item in data['installations'] %}
@@ -15,8 +15,6 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
 
       <div class="govuk-panel govuk-panel--confirmation govuk-!-margin-bottom-7">
         <h1 class="govuk-panel__title">We have received your 2018 emissions</h1>
@@ -54,7 +52,5 @@
           <li><a href="/submit-emissions/select-installation">Submit emissions data for another installation or aircraft operator</a></li>
           <li><a href="/surrender-allowance/select-installation">Surrender allowance for your installation or aircraft operator</a></li>
       </ul>
-    </div>
-  </div>
 
 {% endblock %}
