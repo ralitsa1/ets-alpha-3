@@ -37,15 +37,20 @@ router.get('/surrender-allowance/:page', function (req, res, next) {
   next()
 })
 
-/*
 router.get('/account/:id', function (req, res, next) {
   res.locals['serviceName'] = 'Account'
   res.locals['currentDate'] = Date.now()
   res.locals['installationID'] = req.params.id
   res.locals['pageView'] = req.query.view
-  res.render('account/index')
+  console.log(req.params.id);
+  var permitId = req.params.id;
+  res.locals.installationData = req.session.data['installations'].filter(function (installation, permitID) {
+      if (installation.permitId == permitId) {
+          return installation;
+      }
+  })[0];
+  res.locals['installationData'] =   res.render('account/index')
 })
-*/
 
 
 router.get('/add-a-new-authorised-representative/:page', function (req, res, next) {
