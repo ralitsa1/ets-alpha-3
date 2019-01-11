@@ -13,7 +13,6 @@ router.use(function (req, res, next) {
 })
 
 router.get('/account/:id/:page?/:subPage?', function (req, res, next) {
-  res.locals['serviceName'] = 'Account'
   res.locals['currentDate'] = Date.now()
   res.locals['installationID'] = req.params.id
   res.locals['pageView'] = req.query.view
@@ -33,23 +32,19 @@ router.get('/account/:id/:page?/:subPage?', function (req, res, next) {
 })
 
 router.get('/apply-for-an-account/:page', function (req, res, next) {
-  res.locals['serviceName'] = 'Apply for an ETS account'
   next()
 })
 
 router.get('/register-for-ets/:page', function (req, res, next) {
-  res.locals['serviceName'] = 'Register for ETS'
   next()
 })
 
 router.get('/transfer-allowance/:page', function (req, res, next) {
-  res.locals['serviceName'] = 'Check and trade emissions for ETS'
   next()
 })
 
 
 router.get('/surrender-allowance/:page', function (req, res, next) {
-  res.locals['serviceName'] = 'Surrender emissions allowance for ETS'
   next()
 })
 
@@ -70,12 +65,10 @@ router.post('/account/:id/surrender-allowance/surrender-amount', function (req, 
 })
 
 router.get('/add-a-new-authorised-representative/:page', function (req, res, next) {
-  res.locals['serviceName'] = 'New authorised representative'
   next()
 })
 
 router.get('/add-a-new-trusted-account/:page', function (req, res, next) {
-  res.locals['serviceName'] = 'New trusted account'
   next()
 })
 
