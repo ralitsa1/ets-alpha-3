@@ -28,20 +28,24 @@
       }]
     }) }}
 
-    {{ govukTable({
-        firstCellIsHeader: true,
-        head: [
-          {text: 'Account'},
-          {text: '--'},
-          {text: 'Type'},
-          {text: 'Status'},
-          {text: '---'},
-          {text: '---'}
-        ],
-        rows: data['installations']
-      }) }}
-
-      <a href="/account/">Scunthorpe Integrated Iron & Steel Works</a>
+<table class="govuk-table">
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th class="govuk-table__header" scope="col">Accound Id</th>
+      <th class="govuk-table__header" scope="col">Account name</th>
+      <th class="govuk-table__header govuk-table__header--numeric" scope="col">Units</th>
+    </tr>
+  </thead>
+  <tbody class="govuk-table__body">
+      {% for acct in data['installations'] %}
+    <tr class="govuk-table__row">
+        <th class="govuk-table__header" scope="row"><a href="/account/{{ acct.permitId }}">{{ acct.permitId }}</a></th>
+        <td class="govuk-table__cell">{{ acct.name }}</td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">{{ acct.units }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
   </main>
 

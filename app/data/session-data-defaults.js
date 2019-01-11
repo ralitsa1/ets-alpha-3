@@ -30,6 +30,7 @@ module.exports = {
   'installations': [
     {
       'name': 'Nevern Power Limited',
+      'units': 2364,
       'permitId': 'EU-100-73432-0-76',
       'emissionAllowance': [
         {
@@ -39,6 +40,7 @@ module.exports = {
     },
     {
       'name': 'Scunthorpe Integrated Iron & Steel Works',
+      'units': 2364,
       'permitId': 'EU-100-82345-0-76',
       'emissionAllowance': [
         {
@@ -50,6 +52,7 @@ module.exports = {
     },
     {
       'name': 'Port Talbot Steelworks',
+      'units': 2364,
       'permitId': 'EU-100-73104-0-76',
       'emissionAllowance': [
         {
@@ -59,6 +62,7 @@ module.exports = {
     },
     {
       'name': 'Lynemouth Power Station',
+      'units': 2364,
       'permitId': 'EU-100-77732-0-76',
       'emissionAllowance': [
         {
