@@ -1,25 +1,11 @@
-{% extends "layout.html" %}
-{% set installationName = data['ets-surrender-allowance']['installation'] %}
-{% set installationID = '' %}
-{% for item in data['installations'] %}
-  {% if installationName == (item.name) | trim %}
-    {% set installationID = item.permitId %}
-  {% endif %}
-{% endfor %}
+{% extends "layouts/admin/base-account-question.html" %}
 {% block pageTitle %}
   Surrender your 2018 emission allowance
 {% endblock %}
 
-{% block beforeContent %}
-  <a class="govuk-back-link" href="select-installation">Back</a>
-{% endblock %}
-
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-            <span class="govuk-caption-xl">{{ installationName }}</span>
         Surrender your 2018 emission allowance
       </h1>
       <form class="form" action="surrender-amount" method="post">
@@ -88,9 +74,6 @@
           text: "Submit for approval"
         }) }}
       </form>
-    </div>
-    {% include "includes/sidebar.html" %}
-  </div>
 
 {% endblock %}
 {% block pageScripts %}
