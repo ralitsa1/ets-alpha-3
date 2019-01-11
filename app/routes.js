@@ -59,6 +59,16 @@ router.get('/account/:id/:page/:subPage', function (req, res, next) {
     res.render('account/' + req.params.page + '/' + req.params.subPage);
 })
 
+router.post('/account/:id/surrender-allowance/surrender-amount', function (req, res) {
+  var amountToSurrender = req.session.data['ets-surrender-allowance']['amount-to-surrender']
+
+  if (amountToSurrender === 'other') {
+    res.redirect('confirm-oversurrender')
+  } else {
+    res.redirect('confirmation')
+  }
+})
+
 router.get('/add-a-new-authorised-representative/:page', function (req, res, next) {
   res.locals['serviceName'] = 'New authorised representative'
   next()
@@ -115,15 +125,6 @@ router.post('/register-for-ets/linked-representative-answer', function (req, res
   }
 })
 
-router.post('/surrender-allowance/surrender-amount-answer', function (req, res) {
-  var amountToSurrender = req.session.data['ets-surrender-allowance']['amount-to-surrender']
-
-  if (amountToSurrender === 'other') {
-    res.redirect('confirm-oversurrender')
-  } else {
-    res.redirect('confirmation')
-  }
-})
 
 router.post('/add-a-new-authorised-representative/rep-details-answer', function (req, res, next) {
   var isExistingEtsUser = req.session.data['new-linked-representative']['existing-ets-user']
