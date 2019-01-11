@@ -81,160 +81,32 @@
 <table class="govuk-table" data-type="transactions">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row govuk-!-font-size-16">
-            <th class="govuk-table__header" scope="col">Date</th>
             <th class="govuk-table__header" scope="col">Reference</th>
-            <th class="govuk-table__header " scope="col">Account ID</th>
-            <th class="govuk-table__header" scope="col">Account name</th>
-            <th class="govuk-table__header" scope="col">Unit</th>
-            <th class="govuk-table__header govuk-table__header--numeric" scope="col">In</th>
-            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Out</th>
-            <th class="govuk-table__header" scope="col">State</th>
+            <th class="govuk-table__header" scope="col">Started</th>
+            <th class="govuk-table__header " scope="col">Last updated</th>
+            <th class="govuk-table__header " scope="col">Type</th>
+            <th class="govuk-table__header govuk-table__header--numeric" scope="col">Units</th>
+            <th class="govuk-table__header" scope="col">Unit Type</th>
+            <th class="govuk-table__header" scope="col">Transferring Acct</th>
+            <th class="govuk-table__header" scope="col">Acquiring Acct</th>
+            <th class="govuk-table__header" scope="col">Status</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
+            {% for tx in data['transactions'] %}
           <tr class="govuk-table__row govuk-!-font-size-16">
-            <td class="govuk-table__cell" scope="row">2 Aug 2018</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76398F</td>
-            <td class="govuk-table__cell ">EU-100-77732-0-56</td>
-            <td class="govuk-table__cell" scope="row">DNV GL Business Assurance UK Limited</th>
-            <td class="govuk-table__cell" scope="row">ETS</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">342</td>
-            <td class="govuk-table__cell" scope="row">Approved</th>
+              <th class="govuk-table__cell" scope="row"><a href="#">{{ tx.transactionId }}</th>
+              <td class="govuk-table__cell ">{{ tx.started }}</td>
+              <td class="govuk-table__cell ">{{ tx.lastUpdated }}</td>
+              <td class="govuk-table__cell ">{{ tx.type }}</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric ">{{ tx.units }}</td>
+              <td class="govuk-table__cell ">{{ tx.unitType }}</td>
+              <td class="govuk-table__cell ">{% if tx.transferringAccount == "this" %}{{ installationData.permitId }}{% else %}{{ tx.transferringAccount }}{% endif %}</td>
+              <td class="govuk-table__cell ">{% if tx.acquiringAccount == "this" %}{{ installationData.permitId }}{% else %}{{ tx.acquiringAccount }}{% endif %}</td>
+              <td class="govuk-table__cell ">{{ tx.status }}</td>
           </tr>
+            {% endfor %}
 
-          <tr class="govuk-table__row govuk-!-font-size-16">
-            <td class="govuk-table__cell" scope="row">6 Aug 2018</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76402F</td>
-            <td class="govuk-table__cell ">EU-100-77732-0-26</td>
-            <td class="govuk-table__cell" scope="row">BSI Assurance UK Limited</th>
-            <td class="govuk-table__cell" scope="row">ETS</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">45</td>
-            <td class="govuk-table__cell" scope="row">Pending</th>
-          </tr>
-
-          <tr class="govuk-table__row govuk-!-font-size-16">
-            <td class="govuk-table__cell" scope="row">7 Aug 2018</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76401F</td>
-            <td class="govuk-table__cell ">EU-100-77732-0-36</td>
-            <td class="govuk-table__cell" scope="row">DNV GL Business Assurance UK Limited</th>
-            <td class="govuk-table__cell" scope="row">ETS</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">98</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
-            <td class="govuk-table__cell" scope="row">Approved</th>
-          </tr>
-
-          <tr class="govuk-table__row govuk-!-font-size-16">
-            <td class="govuk-table__cell" scope="row">3 Sept 2018</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76403F</td>
-            <td class="govuk-table__cell ">EU-100-77732-0-76</td>
-            <td class="govuk-table__cell" scope="row">Polimeri Europa UK Limited</th>
-            <td class="govuk-table__cell" scope="row">ETS</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">344</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
-            <td class="govuk-table__cell" scope="row">Proposed</th>
-          </tr>
-
-          <tr class="govuk-table__row govuk-!-font-size-16">
-            <td class="govuk-table__cell" scope="row">15 Sept 2018</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76397F</td>
-            <td class="govuk-table__cell ">EU-100-77732-0-66</td>
-            <td class="govuk-table__cell" scope="row">ERM Certification & Verification Services Ltd</th>
-            <td class="govuk-table__cell" scope="row">ETS</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">144</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
-            <td class="govuk-table__cell" scope="row">Pending</th>
-          </tr>
-
-          <tr class="govuk-table__row govuk-!-font-size-16">
-            <td class="govuk-table__cell" scope="row">22 Sept 2018</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76399F</td>
-            <td class="govuk-table__cell ">EU-100-77732-0-46</td>
-            <td class="govuk-table__cell" scope="row">Lynemouth Power Station</th>
-            <td class="govuk-table__cell" scope="row">ETS</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">475</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
-            <td class="govuk-table__cell" scope="row">Pending</th>
-          </tr>
-
-          <tr class="govuk-table__row govuk-!-font-size-16">
-            <td class="govuk-table__cell" scope="row">3 Oct 2018</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76400F</td>
-            <td class="govuk-table__cell ">EU-100-77732-0-76</td>
-            <td class="govuk-table__cell" scope="row">Polimeri Europa UK Limited</th>
-            <td class="govuk-table__cell" scope="row">ETS</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">876</td>
-            <td class="govuk-table__cell" scope="row">Proposed</th>
-          </tr>
-
-          <tr class="govuk-table__row govuk-!-font-size-16">
-            <td class="govuk-table__cell" scope="row">4 Oct 2018</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76404F</td>
-            <td class="govuk-table__cell ">EU-100-77732-0-16</td>
-            <td class="govuk-table__cell" scope="row">Scunthorpe Integrated Iron & Steel Works</th>
-            <td class="govuk-table__cell" scope="row">ETS</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">67</td>
-            <td class="govuk-table__cell" scope="row">Approved</th>
-          </tr>
-
-          <tr class="govuk-table__row govuk-!-font-size-16">
-            <td class="govuk-table__cell" scope="row">22 Oct 2018</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76396F</td>
-            <td class="govuk-table__cell ">EU-100-77732-0-86</td>
-            <td class="govuk-table__cell" scope="row">Bureau Veritas Certification Holding SAS - UK Branch</th>
-            <td class="govuk-table__cell" scope="row">ETS</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">405</td>
-            <td class="govuk-table__cell" scope="row">Proposed</th>
-          </tr>
-
-
-          <tr class="govuk-table__row govuk-!-font-size-16">
-            <td class="govuk-table__cell" scope="row">1 Nov 2018</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76405F</td>
-            <td class="govuk-table__cell ">EU-100-77732-0-06</td>
-            <td class="govuk-table__cell" scope="row">Nevern Power Limited</th>
-            <td class="govuk-table__cell" scope="row">ETS</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">976</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
-            <td class="govuk-table__cell" scope="row">Pending</th>
-          </tr>
-
-          <tr class="govuk-table__row govuk-!-font-size-16">
-            <td class="govuk-table__cell" scope="row">23 Nov 2018</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76393F</td>
-            <td class="govuk-table__cell ">EU-100-77732-0-76</td>
-            <td class="govuk-table__cell" scope="row">Polimeri Europa UK Limited</th>
-            <td class="govuk-table__cell" scope="row">ETS</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">135</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
-            <td class="govuk-table__cell" scope="row">Approved</th>
-          </tr>
-
-          <tr class="govuk-table__row govuk-!-font-size-16">
-            <td class="govuk-table__cell" scope="row">27 Nov 2018</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76394F</td>
-            <td class="govuk-table__cell">EU-100-77732-0-96</td>
-            <td class="govuk-table__cell" scope="row">Lloyd’s Register Quality Assurance Limited</th>
-            <td class="govuk-table__cell" scope="row">ETS</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
-            <td class="govuk-table__cell govuk-table__cell--numeric">745</td>
-            <td class="govuk-table__cell" scope="row">Proposed</th>
-          </tr>
-
-          <tr class="govuk-table__row govuk-!-font-size-16">
-            <td class="govuk-table__cell" scope="row">28 Nov 2018</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">HXJ76395F</td>
-            <td class="govuk-table__cell ">EU-100-77732-0-76</td>
-            <td class="govuk-table__cell" scope="row">Polimeri Europa UK Limited</th>
-            <td class="govuk-table__cell" scope="row">ETS</th>
-            <td class="govuk-table__cell govuk-table__cell--numeric">123</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric"></td>
-            <td class="govuk-table__cell" scope="row">Approved</th>
-          </tr>
         </tbody>
       </table>
 {% endblock %}

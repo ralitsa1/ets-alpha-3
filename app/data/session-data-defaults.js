@@ -113,6 +113,107 @@ module.exports = {
       id: 'EU-66-5684-0-29'
     }
   ],
+  'transactions': [
+ {
+   "transactionId": "EU472379",
+   "started": "31/12/18 15:12",
+   "lastUpdated": "31/12/18 15:12",
+   "type": "10-72 Receipt of Allowances for Exchange",
+   "units": 363,
+   "unitType": "GA",
+   "transferringAccount": "EU-110-54234-0-22",
+   "acquiringAccount": "this",
+   "status": "4-COMPLETED"
+ },
+ {
+   "transactionId": "EU429591",
+   "started": "27/12/18 16:47",
+   "lastUpdated": "31/12/18 12:07",
+   "type": "10-00 Internal Transfer",
+   "units": 224,
+   "unitType": "CER",
+   "transferringAccount": "this",
+   "acquiringAccount": "EU-110-56193-0-12",
+   "status": "4-COMPLETED"
+ },
+ {
+   "transactionId": "EU647943",
+   "started": "25/04/18 20:24",
+   "lastUpdated": "25/04/18 20:24",
+   "type": "10-02 Surrender Allowances",
+   "units": 34523,
+   "unitType": "GA",
+   "transferringAccount": "this",
+   "acquiringAccount": "EU-110-63222-0-12",
+   "status": "4-COMPLETED"
+ },
+ {
+   "transactionId": "EU104957",
+   "started": "24/02/18 01:46",
+   "lastUpdated": "24/02/18 02:19",
+   "type": "10-36 Allocation General Allowances",
+   "units": 56612,
+   "unitType": "GA",
+   "transferringAccount": "EU-110-93932-0-11",
+   "acquiringAccount": "this",
+   "status": "4-COMPLETED"
+ },
+ {
+   "transactionId": "EU672244",
+   "started": "02/07/13 16:28",
+   "lastUpdated": "02/07/13 16:28",
+   "type": "01-34 Issuance General Allowances Banking",
+   "units": 9756,
+   "unitType": "GA",
+   "transferringAccount": "EU-110-93932-0-11",
+   "acquiringAccount": "this",
+   "status": "4-COMPLETED"
+ },
+ {
+   "transactionId": "EU289247",
+   "started": "02/07/13 16:28",
+   "lastUpdated": "02/07/13 16:28",
+   "type": "01-34 Issuance General Allowances Banking",
+   "units": 4244,
+   "unitType": "GA",
+   "transferringAccount": "EU-110-93932-0-11",
+   "acquiringAccount": "this",
+   "status": "4-COMPLETED"
+ },
+ {
+   "transactionId": "EU345954",
+   "started": "02/07/13 16:28",
+   "lastUpdated": "02/07/13 16:28",
+   "type": "10-34 Deletion General Allowances Banking",
+   "units": 1122,
+   "unitType": "GA",
+   "transferringAccount": "this",
+   "acquiringAccount": "EU-110-59193-0-12",
+   "status": "4-COMPLETED"
+ },
+ {
+   "transactionId": "EU345090",
+   "started": "19/04/13 12:38",
+   "lastUpdated": "22/04/13 14:38",
+   "type": "10-00 Internal Transfer",
+   "units": 553423,
+   "unitType": "GA",
+   "transferringAccount": "this",
+   "acquiringAccount": "EU-110-59193-0-12",
+   "status": "4-COMPLETED"
+ },
+ {
+   "transactionId": "EU945398",
+   "started": "05/06/12 00:00",
+   "lastUpdated": "05/06/12 00:00",
+   "type": "01-32 Decoupling",
+   "units": 678654,
+   "unitType": "GA",
+   "transferringAccount": "EU-110-56193-0-12",
+   "acquiringAccount": "this",
+   "status": "4-COMPLETED"
+ }
+],
   'existing-accounts': [
     {
       name: 'National Grid Gas plc',
