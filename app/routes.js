@@ -12,6 +12,26 @@ router.use(function (req, res, next) {
   next()
 })
 
+router.get('/account/:id/:page?/:subPage?', function (req, res, next) {
+  res.locals['serviceName'] = 'Account'
+  res.locals['currentDate'] = Date.now()
+  res.locals['installationID'] = req.params.id
+  res.locals['pageView'] = req.query.view
+  console.log(req.params.id);
+  var permitId = req.params.id;
+  res.locals.installationData = req.session.data['installations'].filter(function (installation, permitID) {
+      if (installation.permitId == permitId) {
+          return installation;
+      }
+  })[0];
+  if (!req.params.page) {
+      res.locals['installationData'] =   res.render('account/index')
+  }
+  else {
+      next();
+  }
+})
+
 router.get('/apply-for-an-account/:page', function (req, res, next) {
   res.locals['serviceName'] = 'Apply for an ETS account'
   next()
@@ -27,31 +47,17 @@ router.get('/transfer-allowance/:page', function (req, res, next) {
   next()
 })
 
-router.get('/submit-emissions/:page', function (req, res, next) {
-  res.locals['serviceName'] = 'Submit emissions data for ETS'
-  next()
-})
 
 router.get('/surrender-allowance/:page', function (req, res, next) {
   res.locals['serviceName'] = 'Surrender emissions allowance for ETS'
   next()
 })
 
-router.get('/account/:id', function (req, res, next) {
-  res.locals['serviceName'] = 'Account'
-  res.locals['currentDate'] = Date.now()
-  res.locals['installationID'] = req.params.id
-  res.locals['pageView'] = req.query.view
-  console.log(req.params.id);
-  var permitId = req.params.id;
-  res.locals.installationData = req.session.data['installations'].filter(function (installation, permitID) {
-      if (installation.permitId == permitId) {
-          return installation;
-      }
-  })[0];
-  res.locals['installationData'] =   res.render('account/index')
-})
 
+
+router.get('/account/:id/:page/:subPage', function (req, res, next) {
+    res.render('account/' + req.params.page + '/' + req.params.subPage);
+})
 
 router.get('/add-a-new-authorised-representative/:page', function (req, res, next) {
   res.locals['serviceName'] = 'New authorised representative'

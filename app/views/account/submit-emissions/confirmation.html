@@ -1,11 +1,4 @@
 {% extends "layouts/admin/base-account.html" %}
-{% set selectedInstallation = data['ets-submit-emmissions']['installation'] | trim %}
-{% set installationID = '' %}
-{% for item in data['installations'] %}
-  {% if selectedInstallation == (item.name) | trim %}
-    {% set installationID = item.permitId %}
-  {% endif %}
-{% endfor %}
 <!-- Adds a class to increase vertical spacing for pages without a back button -->
 {% set mainClasses = "govuk-main-wrapper--l" %}
 
@@ -24,7 +17,7 @@
       </div>
 
       {{ govukInsetText({
-        html: "Visit account page to <a class='govuk-link' href='/account/" + installationID +"?view=transaction'>check the transaction</a>."
+        html: "Visit account page to <a class='govuk-link' href='/account/" + installationData.permitId +"?view=transaction'>check the transaction</a>."
       }) }}
       <h2 class="govuk-heading-m">What happens next</h2>
       <p class="govuk-body">We have sent you a confirmation email.</p>
@@ -45,12 +38,5 @@
           </strong>
         </div>
 
-        <p>You can now:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-          <li><a href="/transfer-allowance/select-installation">Make an allowance transfer</a></li>
-          <li><a href="/submit-emissions/select-installation">Submit emissions data for another installation or aircraft operator</a></li>
-          <li><a href="/surrender-allowance/select-installation">Surrender allowance for your installation or aircraft operator</a></li>
-      </ul>
 
 {% endblock %}
