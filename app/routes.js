@@ -39,17 +39,6 @@ router.get('/register-for-ets/:page', function (req, res, next) {
   next()
 })
 
-router.get('/transfer-allowance/:page', function (req, res, next) {
-  next()
-})
-
-
-router.get('/surrender-allowance/:page', function (req, res, next) {
-  next()
-})
-
-
-
 router.get('/account/:id/:page/:subPage', function (req, res, next) {
     res.render('account/' + req.params.page + '/' + req.params.subPage);
 })
@@ -62,14 +51,6 @@ router.post('/account/:id/surrender-allowance/surrender-amount', function (req, 
   } else {
     res.redirect('confirmation')
   }
-})
-
-router.get('/add-a-new-authorised-representative/:page', function (req, res, next) {
-  next()
-})
-
-router.get('/add-a-new-trusted-account/:page', function (req, res, next) {
-  next()
 })
 
 router.get('/add-a-new-trusted-account/account-details', function (req, res, next) {
