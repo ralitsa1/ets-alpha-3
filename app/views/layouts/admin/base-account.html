@@ -86,47 +86,7 @@
     {%- block header %}
       {% include "includes/header.html" %}
     {% endblock -%}
-<!--
-{{ hmctsIdentityBar({
-  title: {
-  html: '<strong>' + installationData.name + '</strong> <span class="jui-status  jui-status--new  govuk-!-margin-left-1">Operator account</span>'
-    },
-  items: [
-    {
-      text: 'Submit emissions',
-      href: 'submit-emissions/specify-amount'
-    },
-    {
-      text: 'Surrender allowance',
-      href: 'surrender-allowance/surrender-amount',
-      classes: 'hmcts-button--secondary'
-    },
-    {
-      text: 'More actions',
-      href: '',
-      classes: 'hmcts-button--secondary'
-    }
-  ]
-}) }}
--->
 
-{# {{ hmctsIdentityBar({
-title: { html: '<b>John Smith</b> and <b>Jane Smith</b> Divorce' },
-items: [
-  {
-    text: 'Some action',
-    classes: 'hmcts-button--secondary'
-  },
-  {
-    text: 'Another action',
-    classes: 'hmcts-button--secondary'
-  },
-  {
-    text: 'Another action',
-    classes: 'hmcts-button--secondary'
-  }
-]
-}) }}  #}
 
 <div class="hmcts-identity-bar">
   <div class="hmcts-identity-bar__container">
@@ -150,9 +110,9 @@ items: [
        {# grouped actions #}
       <div class="hmcts-menu hmcts-menu--actions">
         <div class="hmcts-menu__wrapper">
-          <button type="submit" class="govuk-button hmcts-menu__item hmcts-button--secondary ">
-            Some action
-          </button>
+          <a href="transfer-allowance/select-recipient" role="button" class="govuk-button hmcts-menu__item hmcts-button--secondary govuk-!-margin-right-2">
+            Transfer allowance
+          </a>
           <button type="submit" class="govuk-button hmcts-menu__item hmcts-button--secondary ">
             Another action
           </button>
@@ -176,8 +136,10 @@ items: [
     {%- block content %}
     {% endblock -%}
     </div>
+    <div class="govuk-grid-column-one-third">
     {% block timeline %}
     {% endblock %}
+    </div>
   </div>
   
   </main>
