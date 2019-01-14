@@ -61,3 +61,11 @@ $hmcts-page-width: 1220px;
     font-weight: normal;
   }
 }
+
+.hmcts-menu--actions {
+  .hmcts-menu__wrapper--right {
+    @include govuk-media-query($until: tablet) {
+      right: auto;
+    }
+  }
+}

@@ -86,7 +86,7 @@
     {%- block header %}
       {% include "includes/header.html" %}
     {% endblock -%}
-
+<!--
 {{ hmctsIdentityBar({
   title: {
   html: '<strong>' + installationData.name + '</strong> <span class="jui-status  jui-status--new  govuk-!-margin-left-1">Operator account</span>'
@@ -108,6 +108,62 @@
     }
   ]
 }) }}
+-->
+
+{# {{ hmctsIdentityBar({
+title: { html: '<b>John Smith</b> and <b>Jane Smith</b> Divorce' },
+items: [
+  {
+    text: 'Some action',
+    classes: 'hmcts-button--secondary'
+  },
+  {
+    text: 'Another action',
+    classes: 'hmcts-button--secondary'
+  },
+  {
+    text: 'Another action',
+    classes: 'hmcts-button--secondary'
+  }
+]
+}) }}  #}
+
+<div class="hmcts-identity-bar">
+  <div class="hmcts-identity-bar__container">
+    <div class="hmcts-identity-bar__details">
+        <span class="hmcts-identity-bar__title">
+        <strong>{{ installationData.name }}</strong><span class="jui-status  jui-status--new  govuk-!-margin-left-1">Operator account</span>
+        </span>
+    </div>
+    <div class="hmcts-identity-bar__actions">
+      {# primary actions #}
+      <div class="hmcts-menu">
+        <div class="hmcts-menu__wrapper">
+          <a href="submit-emissions/specify-amount" role="button" class="govuk-button hmcts-menu__item  ">
+            Submit emissions
+          </a>
+          <a href="surrender-allowance/surrender-amount" role="button" class="govuk-button hmcts-menu__item hmcts-button--secondary govuk-!-margin-right-2">
+            Surrender allowance
+          </a>
+        </div>
+        </div>
+       {# grouped actions #}
+      <div class="hmcts-menu hmcts-menu--actions">
+        <div class="hmcts-menu__wrapper">
+          <button type="submit" class="govuk-button hmcts-menu__item hmcts-button--secondary ">
+            Some action
+          </button>
+          <button type="submit" class="govuk-button hmcts-menu__item hmcts-button--secondary ">
+            Another action
+          </button>
+          <button type="submit" class="govuk-button hmcts-menu__item hmcts-button--secondary ">
+            Another action
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="jui-width-container">
 
