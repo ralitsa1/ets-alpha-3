@@ -1,6 +1,7 @@
 // global styles for <a> and <p> tags
 $govuk-global-styles: true;
 
+
 $hmcts-page-width: 1220px;
 
 // Import GOV.UK Frontend
@@ -12,6 +13,7 @@ $hmcts-page-width: 1220px;
 @import "patterns/step-by-step-navigation";
 @import "patterns/task-list";
 @import "patterns/related-items";
+@import "patterns/home-office-timeline";
 
 // Components that aren't in Frontend
 @import "components/cookie-banner";
@@ -69,3 +71,4 @@ $hmcts-page-width: 1220px;
     }
   }
 }
+
