@@ -74,43 +74,45 @@ module.exports = {
   'existing-authorised-representatives': [
     {
       name: 'Divina Glaser',
-      id: 'EU-66-5684-0-20'
+      id: '567-235-123',
+      jobTitle: 'Financial Controller',
+      email: 'divina.glaser@rertsss.com',
+      phone: '07823 423242'
     },
     {
       name: 'Luann Steppe',
-      id: 'EU-66-5684-0-21'
+      id: '245-334-223',
+      jobTitle: 'Compliance Manager',
+      email: 'Luann Steppe@grantsignal.com',
+      phone: '07823 256765'
     },
     {
       name: 'Jimmy Pressly',
-      id: 'EU-66-5684-0-22'
+      id: '442-451-234',
+      jobTitle: 'Financial Controller',
+      email: 'jim.pre@brentcross.com',
+      phone: '07235 234423'
     },
     {
       name: 'Tyra Lucas',
-      id: 'EU-66-5684-0-23'
+      id: '774-143-235',
+      jobTitle: 'Compliance Controller',
+      email: 'tyra@sertsprocter.com',
+      phone: '07823 427944'
     },
     {
       name: 'Terisa Pritchett',
-      id: 'EU-66-5684-0-24'
+      id: '344-626-343',
+      jobTitle: 'Financial Manager',
+      email: 't.p@roystonvaysey.com',
+      phone: '07823 242323'
     },
     {
       name: 'Cecille Irving',
-      id: 'EU-66-5684-0-25'
-    },
-    {
-      name: 'Elna Kraushaar',
-      id: 'EU-66-5684-0-26'
-    },
-    {
-      name: 'Luella Hover',
-      id: 'EU-66-5684-0-27'
-    },
-    {
-      name: 'Eloisa Albert',
-      id: 'EU-66-5684-0-28'
-    },
-    {
-      name: 'Fatimah Huffines',
-      id: 'EU-66-5684-0-29'
+      id: '266-423-423',
+      jobTitle: 'Financial Controller',
+      email: 'cecille@reretscottley.com',
+      phone: '07823 274545'
     }
   ],
   'transactions': [
@@ -217,38 +219,47 @@ module.exports = {
   'existing-accounts': [
     {
       name: 'National Grid Gas plc',
+      legalEntity: 'National Gas plc',
       id: 'EU-100-8976-0-88'
     },
     {
       name: 'Conoco Phillips',
+      legalEntity: 'Conoco Industrial Group plc',
       id: 'EU-100-82543-0-87'
     },
     {
       name: 'Dalkia Utilities Services',
+      legalEntity: 'Dalkia Utilities Services Ltd',
       id: 'EU-100-625343-0-99'
     },
     {
       name: 'Perenco UK Ltd',
+      legalEntity: 'Perenco Parenthis Trading Global plc',
       id: 'EU-100-11674-0-56'
     },
     {
       name: 'Polimeri Europa UK Limited',
+      legalEntity: 'Polimeri Global Industries plc',
       id: 'EU-100-77732-0-76'
     },
     {
       name: 'De La Rue International Ltd',
+      legalEntity: 'La Roux Group plc',
       id: 'EU-100-63522-0-03'
     },
     {
       name: 'E.ON UK CHP Ltd',
+      legalEntity: 'E.ON Industries plc',
       id: 'EU-100-99924-0-23'
     },
     {
       name: 'Citigen (London) Ltd',
+      legalEntity: 'Powergen Incorporated plc',
       id: 'EU-100-38476-0-24'
     },
     {
       name: 'Procter & Gamble Product Supply (UK) Ltd',
+      legalEntity: 'P&G Group plc',
       id: 'EU-100-4847-0-25'
     }
   ]

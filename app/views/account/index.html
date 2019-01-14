@@ -99,4 +99,48 @@
 
         </tbody>
       </table>
+
+      <h2 class="govuk-heading-m">Trusted Accounts</h2>
+<table class="govuk-table" data-type="trustedAccounts">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <th class="govuk-table__header" scope="col">Account</th>
+            <th class="govuk-table__header" scope="col">Name</th>
+            <th class="govuk-table__header " scope="col">Legal Entity</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+            {% for ea in data['existing-accounts'] %}
+          <tr class="govuk-table__row govuk-!-font-size-16">
+              <th class="govuk-table__cell" scope="row"><a href="#">{{ ea.id }}</th>
+              <td class="govuk-table__cell ">{{ ea.name }}</td>
+              <td class="govuk-table__cell ">{{ ea.legalEntity }}</td>
+          </tr>
+            {% endfor %}
+
+        </tbody>
+      </table>
+
+      <h2 class="govuk-heading-m">Representatives</h2>
+<table class="govuk-table" data-type="representatives">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row govuk-!-font-size-16">
+            <th class="govuk-table__header" scope="col">Id</th>
+            <th class="govuk-table__header" scope="col">Name</th>
+            <th class="govuk-table__header " scope="col">Job Title</th>
+            <th class="govuk-table__header " scope="col">Contact</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+            {% for ta in data['existing-authorised-representatives'] %}
+          <tr class="govuk-table__row govuk-!-font-size-16">
+              <th class="govuk-table__cell" scope="row"><a href="#">{{ ta.id }}</th>
+              <td class="govuk-table__cell ">{{ ta.name }}</td>
+              <td class="govuk-table__cell ">{{ ta.jobTitle }}</td>
+              <td class="govuk-table__cell ">{{ ta.email }}<br/>Tel: {{ ta.phone }}</td>
+          </tr>
+            {% endfor %}
+
+        </tbody>
+      </table>
 {% endblock %}
