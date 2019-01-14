@@ -131,17 +131,19 @@ items: [
 <div class="hmcts-identity-bar">
   <div class="hmcts-identity-bar__container">
     <div class="hmcts-identity-bar__details">
-        <span class="hmcts-identity-bar__title"><b>John Smith</b> and <b>Jane Smith</b> Divorce</span>
+        <span class="hmcts-identity-bar__title">
+        <strong>{{ installationData.name }}</strong><span class="jui-status  jui-status--new  govuk-!-margin-left-1">Operator account</span>
+        </span>
     </div>
     <div class="hmcts-identity-bar__actions">
       {# primary actions #}
       <div class="hmcts-menu">
         <div class="hmcts-menu__wrapper">
-          <a href="#" role="button" class="govuk-button hmcts-menu__item  ">
-            Make a decision
+          <a href="submit-emissions/specify-amount" role="button" class="govuk-button hmcts-menu__item  ">
+            Submit emissions
           </a>
-          <a href="#" role="button" class="govuk-button hmcts-menu__item hmcts-button--secondary govuk-!-margin-right-2">
-            List for hearing
+          <a href="surrender-allowance/surrender-amount" role="button" class="govuk-button hmcts-menu__item hmcts-button--secondary govuk-!-margin-right-2">
+            Surrender allowance
           </a>
         </div>
         </div>
