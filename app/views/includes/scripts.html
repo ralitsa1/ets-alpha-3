@@ -18,4 +18,15 @@
       container: $('.hmcts-search')
     }
   });
+
+  if (document.querySelector('.hmcts-menu')) {
+    new HMCTSFrontend.Menu({
+      container: $('.hmcts-menu'),
+      mq: '(min-width: 200em)',
+      buttonText: 'Menu',
+      buttonClasses: 'hmcts-button--secondary hmcts-menu__toggle-button--secondary'
+    });
+  }
+  
+
 </script>
