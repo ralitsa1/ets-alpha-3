@@ -1,21 +1,18 @@
-{% extends "layout.html" %}
+{% extends "layouts/admin/base-account-question.html" %}
+
 {% set recipientType = data['ets-transfer-allowance']['select-recipient'] %}
-{% set selectedInstallation = data['ets-transfer-allowance']['installation'] | trim %}
 {% set installationID = '' %}
-{% for item in data['installations'] %}
-  {% if selectedInstallation == (item.name) | trim %}
-    {% set installationID = item.permitId %}
-  {% endif %}
-{% endfor %}
+    {% set installationID = selectedInstallation.permitId %}
 {% set mainClasses = "govuk-main-wrapper--l" %}
 {% block pageTitle %}
   Confirmation page
 {% endblock %}
 
+{% block beforeContent %}
+{% endblock %}
+
 {% block content %} 
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
 
       <div class="govuk-panel govuk-panel--confirmation govuk-!-margin-bottom-7">
         <h1 class="govuk-panel__title">
@@ -30,7 +27,7 @@
         </div>
       </div>
       {{ govukInsetText({
-        html: "Visit account page to <a class='govuk-link' href='/account/" + installationID +"?view=transaction'>check the transaction</a>."
+        html: "Visit account page to <a class='govuk-link' href='/account/" + installationData.permitId +"/'>check the transaction</a>."
       }) }}
       <h2 class="govuk-heading-m"> What happens next</h2>
       {% if recipientType == 'existing' %}
@@ -52,13 +49,6 @@
       
       <p>We've sent a notification of your transfer to all representatives for this account. Once it's approved it will take 26 hours for your transfer to be processed.<p/> 
       {% endif %}
-      <p>You can now:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li><a href="/transfer-allowance/select-installation">Make another transfer</a></li>
-        <li><a href="/submit-emissions/select-installation">Submit emissions data for 2019</a></li>
-        <li><a href="/surrender-allowance/select-installation">Surrender allowance for your installation</a></li>
-      </ul>
 
       <p>Learn more about <a href="https://www.gov.uk/guidance/eu-ets-allowances">how to get more allowance</a>.</p>
 

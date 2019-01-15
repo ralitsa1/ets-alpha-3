@@ -1,12 +1,9 @@
-{% extends "layout.html" %}
+{% extends "layouts/admin/base-account-question.html" %}
 
 {% block pageTitle %}
   How much allowance do you want to transfer?
 {% endblock %}
 
-{% block beforeContent %}
-  <a class="govuk-back-link" href="confirm-new-recipient">Back</a>
-{% endblock %}
 
 
 {% block content %}
@@ -15,16 +12,12 @@
 input, select { display: block; }
 </style>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
-      <span class="govuk-caption-xl">{{ data['installationName']}}</span>
       How much allowance do you want to transfer?
     </h1>
     <form class="form" action="check-and-submit-transfer" method="post">
-      {% set selected = data['ets-transfer-allowance']['installation'] | trim %}
       {% for item in data['installations'] %}
-        {% if selected == (item.name) | trim %}
+        {% if installationData.name == (item.name) | trim %}
         {% for item in item.emissionAllowance %}
           {% for type, value in item %}
           {{ govukInput({
@@ -58,9 +51,6 @@ input, select { display: block; }
       }) }}
 
     </form>
-  </div>
-  {% include "includes/sidebar.html" %}
-</div>
 
 {% endblock %}
 

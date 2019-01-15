@@ -1,13 +1,8 @@
-{% extends "layout.html" %}
+{% extends "layouts/admin/base-account-question.html" %}
 
 {% block pageTitle %}
   Transfer to an existing recipient
 {% endblock %}
-
-{% block beforeContent %}
-  <a class="govuk-back-link" href="select-recipient">Back</a>
-{% endblock %}
-
 
 {% block content %}
 
@@ -15,10 +10,7 @@
 input, select { display: block; }
 </style>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">
-      <span class="govuk-caption-xl">{{ data['ets-transfer-allowance']['installation'] }}</span>
+    <h1 class="govuk-heading-l">
       Transfer to an existing recipient
     </h1>
 
@@ -83,9 +75,8 @@ input, select { display: block; }
           ]
       }) }}
       <h2 class="govuk-heading-m">Specify the amount for units you would like to transfer</h2>
-      {% set selected = data['ets-transfer-allowance']['installation'] | trim %}
       {% for item in data['installations'] %}
-        {% if selected == (item.name) | trim %}
+        {% if installationData.name == (item.name) | trim %}
         {% for item in item.emissionAllowance %}
           {% for type, value in item %}
           {{ govukInput({
@@ -124,9 +115,6 @@ input, select { display: block; }
         value: 'existing'
       }) }}
     </form>
-  </div>
-  {% include "includes/sidebar.html" %}
-</div>
 
 {% endblock %}
 

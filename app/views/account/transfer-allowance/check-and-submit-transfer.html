@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layouts/admin/base-account-question.html" %}
 
 {% set recipientType = data['ets-transfer-allowance']['select-recipient'] %}
 {% set recipientURL = 'existing-recipient' if recipientType == 'existing' else 'new-recipient' %}
@@ -6,21 +6,17 @@
 {% block pageTitle %}
   Confirm transfer to an existing recipient
 {% endblock %}
-{% block beforeContent %}
-  <a class="govuk-back-link" href="{{recipientURL}}">Back</a>
-{% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">
-        <span class="govuk-caption-xl">{{ data['ets-transfer-allowance']['installation'] }}</span>
+      <h1 class="govuk-heading-l">
+          Confirm transfer to 
         {% if recipientType == 'existing' %}
-          Confirm transfer to an existing recipient
+          an existing 
         {% elif recipientType == 'new' %}
-           Confirm transfer to a new recipient
+        a new
         {% endif %}
+        recipient
       </h1>
 
 
@@ -104,18 +100,10 @@
         }) }}
       {% endif %}
 
-      {{ govukButton({
-        html: "Go back and change<span class='govuk-visually-hidden'> amounts</span>",
-        classes: 'govuk-button--as-link',
-        href: goBackURL
-      }) }}
 
       {{ govukButton({
         text: "Submit transfer and send for approval",
         href:"confirmation"
       }) }}
 
-    </div>
-    {% include "includes/sidebar.html" %}
-  </div>
 {% endblock %}

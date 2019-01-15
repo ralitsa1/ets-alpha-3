@@ -1,24 +1,18 @@
-{% extends "layout.html" %}
+{% extends "layouts/admin/base-account-question.html" %}
 
 {% block pageTitle %}
-  Who do you want to transfer allowance to?
+Select recipient
 {% endblock %}
 
-{% block beforeContent %}
-  <a class="govuk-back-link" href="select-installation">Back</a>
-{% endblock %}
 
 {% block content %}
 
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-   <h1 class="govuk-heading-xl">
-      <span class="govuk-caption-xl">{{ data['ets-transfer-allowance']['installation'] }}</span>
+   <h1 class="govuk-heading-l">
     Which installation do you want to transfer allowance to?
     </h1>
     
-    <form class="form" action="select-recipient-answer" method="post">
+    <form class="form" action="select-recipient" method="post">
       {{ govukRadios({
         idPrefix: "select-recipient",
         name: "ets-transfer-allowance[select-recipient]",
@@ -48,9 +42,6 @@
       }) }}
 
     </form>
-  </div>
-  {% include "includes/sidebar.html" %}
-</div>
 
 
 {% endblock %}

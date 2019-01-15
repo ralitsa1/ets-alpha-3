@@ -60,7 +60,11 @@ router.get('/add-a-new-trusted-account/account-details', function (req, res, nex
   next()
 })
 
-router.post('/transfer-allowance/select-recipient-answer', function (req, res) {
+router.post('/account/:id/transfer-allowance/select-installation', function (req, res) {
+    res.redirect('select-recipient');
+})
+
+router.post('/account/:id/transfer-allowance/select-recipient', function (req, res) {
   var recipientType = req.session.data['ets-transfer-allowance']['select-recipient']
 
   if (recipientType === 'existing') {
