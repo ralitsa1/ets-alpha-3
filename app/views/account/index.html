@@ -78,7 +78,6 @@
 
         </tbody>
       </table>
-
       <h2 class="govuk-heading-m">Transaction History</h2>
 <table class="govuk-table" data-type="transactions">
         <thead class="govuk-table__head">
@@ -95,6 +94,35 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
+        {% if data['ets-surrender-allowance']['amount-to-surrender'] %}
+          <tr class="govuk-table__row govuk-!-font-size-16">
+              <th class="govuk-table__cell" scope="row"><a href="#">EU596032</th>
+              <td class="govuk-table__cell ">
+                {{ currentDate | date("DD MMMM YYYY") }}<br/>
+                {{ currentDate | date("h:mm:ss a") }}
+              </td>
+              <td class="govuk-table__cell ">
+                {{ currentDate | date("DD MMMM YYYY") }}<br/>
+                {{ currentDate | date("h:mm:ss a") }}
+              </td>
+              <td class="govuk-table__cell ">10-02 Surrender Allowances</td>
+              <td class="govuk-table__cell govuk-table__cell--numeric ">
+              {% if data['ets-surrender-allowance']['surrender-custom-amount'] != '' %}
+                <strong>140</strong> units oversurrendered
+              {% else %}
+                {{ data['ets-surrender-allowance']['amount-to-surrender'] }}
+              {% endif %}
+              </td>
+              <td class="govuk-table__cell ">GA</td>
+              <td class="govuk-table__cell ">EU-100-73432-0-76</td>
+              <td class="govuk-table__cell ">EU-110-93932-0-11</td>
+              <td class="govuk-table__cell ">
+                {{ govukTag({
+                text: "awaiting approval"
+              }) }}
+              </td>
+          </tr>
+          {% endif %}
             {% for tx in data['transactions'] %}
           <tr class="govuk-table__row govuk-!-font-size-16">
               <th class="govuk-table__cell" scope="row"><a href="#">{{ tx.transactionId }}</th>
