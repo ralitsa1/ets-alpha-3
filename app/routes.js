@@ -54,7 +54,7 @@ router.post('/account/:id/surrender-allowance/surrender-amount', function (req, 
   if (amountToSurrender === 'other') {
     res.redirect('confirm-oversurrender')
   } else {
-    res.redirect('confirmation')
+    res.redirect('check-and-submit')
   }
 })
 
