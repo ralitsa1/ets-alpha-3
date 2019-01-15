@@ -9,9 +9,9 @@ Select recipient
 
 
    <h1 class="govuk-heading-l">
-    Which installation do you want to transfer allowance to?
+  Which installation or airline do you want to transfer allowance to?
     </h1>
-    
+
     <form class="form" action="select-recipient" method="post">
       {{ govukRadios({
         idPrefix: "select-recipient",
@@ -20,20 +20,23 @@ Select recipient
         items: [
           {
             value: "existing",
-            text: "Existing recipient",
-            hint: {
-              text: "You saved this recipient before or it's an installation you manage."
-            },
+            text: "An installation or airline you manage",
+
             checked: checked("['ets-transfer-allowance']['select-recipient']",'existing')
           },
           {
-            value: "new",
-            text: "New recipient",
-            hint: {
-              text: "You have not saved this recipient before."
-            },
+            value: "existing",
+            text: "An installation or airline whose details you've saved before",
+
             checked: checked("['ets-transfer-allowance']['select-recipient']",'new')
           }
+
+          {
+            value: "new",
+            text: "An installation or airline whose details you haven't saved before",
+
+            checked: checked("['ets-transfer-allowance']['select-recipient']",'existing')
+          },
         ]
       }) }}
 
