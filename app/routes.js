@@ -43,6 +43,11 @@ router.get('/account/:id/:page/:subPage', function (req, res, next) {
     res.render('account/' + req.params.page + '/' + req.params.subPage);
 })
 
+router.post('/account/:id/submit-emissions/specify-amount', function (req, res) {
+    req.session.data['ets-submit-emmissions']['total'] = parseInt(req.session.data['ets-submit-emmissions']['emissions']['co2']) + parseInt(req.session.data['ets-submit-emmissions']['emissions']['pfc']) + parseInt(req.session.data['ets-submit-emmissions']['emissions']['no2']);
+    res.redirect('/account/' + req.params.id + '/submit-emissions/select-verifier');
+})
+
 router.post('/account/:id/surrender-allowance/surrender-amount', function (req, res) {
   var amountToSurrender = req.session.data['ets-surrender-allowance']['amount-to-surrender']
 

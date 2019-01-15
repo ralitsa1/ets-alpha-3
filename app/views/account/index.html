@@ -57,9 +57,21 @@
           </tr>
 
           <tr class="govuk-table__row govuk-!-font-size-16">
-            <td class="govuk-table__cell" scope="row">N/A</th>
+            <td class="govuk-table__cell" scope="row">
+                {% if data['ets-submit-emmissions'] %}
+                15 January 2019
+                {% else %}
+                N/A
+                {% endif %}
+            </th>
             <td class="govuk-table__cell govuk-table__cell--numeric">2018</td>
-            <td class="govuk-table__cell govuk-table__cell--numeric"><span class="jui-status  jui-status--new  govuk-!-margin-left-1">Due 11 March</span></td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+                {% if data['ets-submit-emmissions'] %}
+                {{ data['ets-submit-emmissions']['total'] }} <br />
+                {% else %}
+                <span class="jui-status  jui-status--new  govuk-!-margin-left-1">Due 11 March</span>
+                {% endif %}
+            </td>
             <td class="govuk-table__cell govuk-table__cell--numeric"><span class="jui-status  jui-status--new  govuk-!-margin-left-1">Due 15 March</span></td>
             <td class="govuk-table__cell govuk-table__cell--numeric">N/A</td>
           </tr>
