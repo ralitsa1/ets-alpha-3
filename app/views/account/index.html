@@ -166,7 +166,7 @@
         </tbody>
       </table>
 
-      <h2 class="govuk-heading-m">Trusted Accounts</h2>
+      <h2 id="trusted-accounts" class="govuk-heading-m">Trusted Accounts</h2>
 <table class="govuk-table" data-type="trustedAccounts">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row govuk-!-font-size-16">
@@ -179,15 +179,15 @@
             {% if data['newTrustedAccounts'] %}
             {% for item in data['newTrustedAccounts'] %}
               <tr class="govuk-table__row govuk-!-font-size-16">
-              <th class="govuk-table__cell" scope="row"><a href="#">EU-100-99924-XXX</th>
-              <td class="govuk-table__cell ">{{ item.nickname }} <br />
-              <i>{{ item.note }}</i>
-              </td>
-              <td class="govuk-table__cell ">
+              <th class="govuk-table__cell" scope="row"><a href="#">EU-100-99924-XXX</a><br />
               {{ govukTag({
                 text: "new"
               }) }}
+              </th>
+              <td class="govuk-table__cell ">{{ item.nickname }} <br />
+              <i>{{ item.note }}</i>
               </td>
+              <td class="govuk-table__cell ">XXX</td>
           </tr>
             {% endfor %}
             {% endif %}
@@ -201,7 +201,7 @@
 
         </tbody>
       </table>
-      <h2 class="govuk-heading-m">Representatives</h2>
+      <h2 id="representatives" class="govuk-heading-m">Representatives</h2>
       <table class="govuk-table" data-type="representatives">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row govuk-!-font-size-16">
@@ -213,16 +213,16 @@
         </thead>
         <tbody class="govuk-table__body">
           {% if data['newAuthorisedReps'] %}
-          {% for name in data['newAuthorisedReps'] %}\
+          {% for name in data['newAuthorisedReps'] %}
             <tr class="govuk-table__row govuk-!-font-size-16">
-              <th class="govuk-table__cell" scope="row"><a href="#">995-543-XXX</a></th>
-              <td class="govuk-table__cell ">{{ name }}</td>
-              <td class="govuk-table__cell ">unspecified</td> 
-              <td class="govuk-table__cell ">
+              <th class="govuk-table__cell" scope="row"><a href="#">995-543-XXX</a><br />
               {{ govukTag({
                 text: "new"
-              }) }}
-              </td>
+              }) }} 
+              </th>
+              <td class="govuk-table__cell ">{{ name }}</td>
+              <td class="govuk-table__cell ">XXX</td> 
+              <td class="govuk-table__cell ">XXX</td>
             </tr>
           {% endfor %}
           {% endif %}
