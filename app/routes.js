@@ -12,6 +12,11 @@ router.use(function (req, res, next) {
   next()
 })
 
+router.get('/', function (req, res, next) {
+  req.session.data.pageView = req.query.view || 'operator'
+  next()
+})
+
 router.get('/account/:id/:page?/:subPage?', function (req, res, next) {
   res.locals['currentDate'] = Date.now()
   res.locals['installationID'] = req.params.id
