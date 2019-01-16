@@ -21,7 +21,7 @@
       {% for acct in data['installations'] %}
         <div class="action-container">
             <div class="instruction action-grid-cell">
-                <h3 class="govuk-heading-s">Request for approval: Transfer of units</h3>
+                <h3 class="govuk-heading-m">Request for approval: Transfer of units</h3>
             </div>
             <div class="related-data-col-1 action-grid-cell">
             <table class="govuk-table">
@@ -57,14 +57,19 @@
             <table class="govuk-table">
               <tbody class="govuk-table__body">
                 <tr class="govuk-table__row">
-                    <th class="govuk-table__header" scope="row">Stuff</th>
-                    <td class="govuk-table__cell">{{ acct.name }}</td>
+                    <th class="govuk-table__header" scope="row">Started</th>
+                    <td class="govuk-table__cell">Today 09:15am</td>
+                </tr>
+                <tr class="govuk-table__row">
+                    <th class="govuk-table__header" scope="row">Reference</th>
+                    <td class="govuk-table__cell">EU423332</td>
                 </tr>
               </tbody>
             </table>
             </div>
             <div class="action-options action-grid-cell">
-        <a href="#" role="button" draggable="false" class="govuk-button hmcts-button--secondary" style="margin-bottom: 0px;">Approve</a>
+        <a href="#" role="button" draggable="false" class="govuk-button">Approve</a>
+        <a href="#" role="button" draggable="false" class="govuk-button hmcts-button--secondary" style="margin-bottom: 0px;">Reject</a>
             </div>
         </div>
 
