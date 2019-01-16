@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layouts/admin/base-account-question.html" %}
 {% set newAccountId = (data['new-trusted-account']['id']) | trim or '' %}
 {% set accountDetails = '' %}
 {% for item in data['existing-accounts'] %}

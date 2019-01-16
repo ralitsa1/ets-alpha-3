@@ -1,11 +1,5 @@
-{% extends "layout.html" %}
+{% extends "layouts/admin/base-account-question.html" %}
 {% set selectedInstallation = (data['new-linked-representative']['installation']) or '' %}
-{% set installationID = '' %}
-{% for item in data['installations'] %}
-  {% if selectedInstallation == (item.name) | trim %}
-    {% set installationID = item.permitId %}
-  {% endif %}
-{% endfor %}
 
 <!-- Adds a class to increase vertical spacing for pages without a back button -->
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -15,9 +9,6 @@
 {% endblock %}
 
 {% block content %}
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
       {% if data['new-linked-representative']['existing-ets-user'] == 'no' %}
         <div class="govuk-warning-text">
           <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -43,7 +34,5 @@
         html: "Visit account page to <a class='govuk-link' href='/account/" + installationID +"?view=representatives'>manage representatives</a>."
       }) }}
       {% endif %}
-    </div>
-  </div>
 
 {% endblock %}
