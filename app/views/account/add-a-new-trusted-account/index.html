@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layouts/admin/base-account-question.html" %}
 
 {% block pageTitle %}
   Which installation do you want to add a new trusted account for?
@@ -7,9 +7,6 @@
 
 
 {% block content %}
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
 
       <form class="form" action="account-details" method="post">
         {{ govukRadios({
@@ -63,8 +60,5 @@
         }) }}
 
       </form>
-
-    </div>
-  </div>
 
 {% endblock %}

@@ -176,6 +176,21 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
+            {% if data['newTrustedAccounts'] %}
+            {% for item in data['newTrustedAccounts'] %}
+              <tr class="govuk-table__row govuk-!-font-size-16">
+              <th class="govuk-table__cell" scope="row"><a href="#">EU-100-99924-XXX</th>
+              <td class="govuk-table__cell ">{{ item.nickname }} <br />
+              <i>{{ item.note }}</i>
+              </td>
+              <td class="govuk-table__cell ">
+              {{ govukTag({
+                text: "new"
+              }) }}
+              </td>
+          </tr>
+            {% endfor %}
+            {% endif %}
             {% for ea in data['existing-accounts'] %}
           <tr class="govuk-table__row govuk-!-font-size-16">
               <th class="govuk-table__cell" scope="row"><a href="#">{{ ea.id }}</th>
@@ -186,9 +201,8 @@
 
         </tbody>
       </table>
-
       <h2 class="govuk-heading-m">Representatives</h2>
-<table class="govuk-table" data-type="representatives">
+      <table class="govuk-table" data-type="representatives">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row govuk-!-font-size-16">
             <th class="govuk-table__header" scope="col">Id</th>
@@ -198,6 +212,20 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
+          {% if data['newAuthorisedReps'] %}
+          {% for name in data['newAuthorisedReps'] %}\
+            <tr class="govuk-table__row govuk-!-font-size-16">
+              <th class="govuk-table__cell" scope="row"><a href="#">995-543-XXX</a></th>
+              <td class="govuk-table__cell ">{{ name }}</td>
+              <td class="govuk-table__cell ">unspecified</td> 
+              <td class="govuk-table__cell ">
+              {{ govukTag({
+                text: "new"
+              }) }}
+              </td>
+            </tr>
+          {% endfor %}
+          {% endif %}
             {% for ta in data['existing-authorised-representatives'] %}
           <tr class="govuk-table__row govuk-!-font-size-16">
               <th class="govuk-table__cell" scope="row"><a href="#">{{ ta.id }}</th>
