@@ -17,10 +17,19 @@
           iconFallbackText: 'Success'
         }) }}
     {% endif %}
-
+      {% set titleHTML %}
+      <span class="govuk-caption-xl">
+      {% if data['pageView'] == 'ea' %}
+        National Administrator
+      {% else %}
+       {{ data['pageView'] | capitalize }} account
+      {% endif %}
+      </span>
+      <h1 class="govuk-heading-xl">Your accounts</h1>
+      {% endset %}
     {{ hmctsPageHeaderWithActions({
       title: {
-        html: '<h1 class="govuk-heading-xl">Your accounts</h1>'
+        html: titleHTML
       },
       items: [{
         text: 'Add new installation',
