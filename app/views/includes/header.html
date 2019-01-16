@@ -60,8 +60,14 @@
     items: [{
       text: 'Your accounts',
       href: '/app/dashboard',
-      active: pageID == 'your-cases'
-    }],
+      active: pageID == 'your-accounts'
+    },
+    {
+      text: 'Your Tasks',
+      href: '/app/tasks',
+      active: pageID == 'your-tasks'
+    }
+    ],
     searchHtml: toggleSearchHtml
   }) }}
 {% endif %}

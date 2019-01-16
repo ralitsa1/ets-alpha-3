@@ -1,8 +1,8 @@
 {% extends "layouts/admin/base.html" %}
 
-{% set pageID = "your-cases" %}
+{% set pageID = "your-accounts" %}
 
-{% block pageTitle %}Your cases {{'- ' + serviceName}}{% endblock %}
+{% block pageTitle %}Your accounts {{'- ' + serviceName}}{% endblock %}
 
 {% block content %}
 
@@ -18,63 +18,15 @@
         }) }}
     {% endif %}
 
-      {% for acct in data['installations'] %}
-        <div class="action-container">
-            <div class="instruction action-grid-cell">
-                <h3 class="govuk-heading-m">Request for approval: Transfer of units</h3>
-            </div>
-            <div class="related-data-col-1 action-grid-cell">
-            <table class="govuk-table">
-              <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                    <th class="govuk-table__header" scope="row">
-                        Units
-                    </th>
-                    <td class="govuk-table__cell">1234</td>
-                </tr>
-                <tr class="govuk-table__row">
-                    <th class="govuk-table__header" scope="row">
-                        Unit Type
-                    </th>
-                    <td class="govuk-table__cell">General Allowance</td>
-                </tr>
-                <tr class="govuk-table__row">
-                    <th class="govuk-table__header" scope="row">
-                     Transferring Acct
-                    </th>
-                    <td class="govuk-table__cell"><a href="/account/{{ acct.permitId }}/">{{ acct.permitId }}</a></td>
-                </tr>
-                <tr class="govuk-table__row">
-                    <th class="govuk-table__header" scope="row">
-                     Receiving Acct
-                    </th>
-                    <td class="govuk-table__cell"><a href="/account/{{ acct.permitId }}/">{{ acct.permitId }}</a></td>
-                </tr>
-              </tbody>
-            </table>
-            </div>
-            <div class="related-data-col-2 action-grid-cell">
-            <table class="govuk-table">
-              <tbody class="govuk-table__body">
-                <tr class="govuk-table__row">
-                    <th class="govuk-table__header" scope="row">Started</th>
-                    <td class="govuk-table__cell">Today 09:15am</td>
-                </tr>
-                <tr class="govuk-table__row">
-                    <th class="govuk-table__header" scope="row">Reference</th>
-                    <td class="govuk-table__cell">EU423332</td>
-                </tr>
-              </tbody>
-            </table>
-            </div>
-            <div class="action-options action-grid-cell">
-        <a href="#" role="button" draggable="false" class="govuk-button">Approve</a>
-        <a href="#" role="button" draggable="false" class="govuk-button hmcts-button--secondary" style="margin-bottom: 0px;">Reject</a>
-            </div>
-        </div>
+{% set bannerHtml %}
+<h2 class="govuk-heading-m">4 transfers have been proposed which require your approval</h2>
+<p><a href="tasks">Review transfers</a></p>
+{% endset %}
 
+{{ hmctsBanner({
+html: bannerHtml
+}) }} 
 
-    {% endfor %}
 
 
         <a href="/account/{{ acct.permitId }}/">{{ acct.permitId }}</a>
