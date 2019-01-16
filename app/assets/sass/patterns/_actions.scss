@@ -1,13 +1,45 @@
 $base-grey-light: #F5F5F5;
 
-.beis-actions-container {
-    background-color: $base-grey-light;
-    margin-bottom: 50px;
+.action-container {
+  background-color: $base-grey-light;
+  margin-bottom: 1em;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  grid-gap: 10px;
 }
 
-div .beis-actions {
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-bottom: 5px;
-    padding-top: 10px;
+.action-container > div {
+}
+
+.action-container .action-grid-cell {
+}
+
+div .action-container .instruction {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 1;
+  border-bottom: 1px #c0c0c0 solid;
+ 
+}
+
+div .action-container .related-data-col-1 {
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
+}
+
+div .action-container .related-data-col-2 {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+}
+
+div .action-container .action-options {
+  padding: 10px;
+  border-left: 1px #c0c0c0 solid;
+  grid-column: 3 / span 1;
+  grid-row: 1 / span 2;
+}
+
+div .action-container .action-options a {
+  margin-left: 25%;
+  margin-right: 25%;
 }
