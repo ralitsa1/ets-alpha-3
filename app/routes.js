@@ -16,7 +16,7 @@ router.get('/account/:id/:page?/:subPage?', function (req, res, next) {
   res.locals['currentDate'] = Date.now()
   res.locals['installationID'] = req.params.id
   res.locals['pageView'] = req.query.view
-  console.log(req.params.id);
+  
   var permitId = req.params.id;
   res.locals.installationData = req.session.data['installations'].filter(function (installation, permitID) {
       if (installation.permitId == permitId) {
@@ -40,7 +40,10 @@ router.get('/register-for-ets/:page', function (req, res, next) {
 })
 
 router.get('/account/:id/:page/:subPage', function (req, res, next) {
-    res.render('account/' + req.params.page + '/' + req.params.subPage);
+  if (req.query.error) {
+    res.locals['errorExists'] = req.query.error
+  }
+  res.render('account/' + req.params.page + '/' + req.params.subPage)
 })
 
 router.post('/account/:id/submit-emissions/specify-amount', function (req, res) {
@@ -56,13 +59,6 @@ router.post('/account/:id/surrender-allowance/surrender-amount', function (req, 
   } else {
     res.redirect('check-and-submit')
   }
-})
-
-router.get('/add-a-new-trusted-account/account-details', function (req, res, next) {
-  if (req.query.error) {
-    res.locals['errorExists'] = req.query.error
-  }
-  next()
 })
 
 router.post('/account/:id/transfer-allowance/select-installation', function (req, res) {
@@ -109,18 +105,18 @@ router.post('/register-for-ets/linked-representative-answer', function (req, res
 })
 
 
-router.post('/add-a-new-authorised-representative/rep-details-answer', function (req, res, next) {
+router.post('/account/:id/add-a-new-authorised-representative/representative-details', function (req, res, next) {
   var isExistingEtsUser = req.session.data['new-linked-representative']['existing-ets-user']
   var existingUserId = req.session.data['new-linked-representative']['id']
 
   if (isExistingEtsUser === 'yes' && existingUserId !== ' ') {
-    res.redirect('check-respresentative-details')
+    res.redirect('/account/' + req.params.id + '/add-a-new-authorised-representative/check-respresentative-details')
   } else {
-    res.redirect('confirmation')
+    res.redirect('/account/' + req.params.id + '/add-a-new-authorised-representative/confirmation')
   }
 })
 
-router.post('/add-a-new-authorised-representative/confirmation', function (req, res, next) {
+router.post('/account/:id/add-a-new-authorised-representative/confirmation', function (req, res, next) {
   var newAuthorisedRepName = req.session.data['new-authorised-representatives']['name']
   var newAuthorisedReps = req.session.data.newAuthorisedReps
   if (!newAuthorisedReps.includes(newAuthorisedRepName)) {
@@ -129,18 +125,18 @@ router.post('/add-a-new-authorised-representative/confirmation', function (req, 
   next()
 })
 
-router.post('/add-a-new-trusted-account/account-details-answer', function (req, res, next) {
+router.post('/account/:id/add-a-new-trusted-account/account-details', function (req, res, next) {
   var newTrustedAccountId = req.session.data['new-trusted-account']['id'] || ' '
   var doesItemExist = req.session.data['existing-accounts'].find(o => o.id === newTrustedAccountId) || false
 
   if (newTrustedAccountId !== ' ' && doesItemExist) {
-    res.redirect('check-account-details')
+    res.redirect('/account/' + req.params.id + '/add-a-new-trusted-account/check-account-details')
   } else {
-    res.redirect('/add-a-new-trusted-account/account-details?error=true')
+    res.redirect('/account/' + req.params.id + '/add-a-new-trusted-account/account-details?error=true')
   }
 })
 
-router.post('/add-a-new-trusted-account/confirmation', function (req, res, next) {
+router.post('/account/:id/add-a-new-trusted-account/confirmation', function (req, res, next) {
   var newTrustedAccountId = req.session.data['new-trusted-account']['id']
   var newTrustedAccountDetails = {
     id: newTrustedAccountId,

@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "layouts/admin/base-account-question.html" %}
 
 {% block pageTitle %}
   Representative details
@@ -9,10 +9,7 @@
 {% endblock %}
 
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      <form action='rep-details-answer' method="POST">
+      <form action='representative-details' method="POST">
       {% set representativeID %}
       {{ govukInput({
         id: "id",
@@ -57,7 +54,5 @@
         }) }}
       {% endcall %}
       </form>
-    </div>
-  </div>
 
 {% endblock %}

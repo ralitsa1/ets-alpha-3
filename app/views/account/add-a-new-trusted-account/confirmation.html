@@ -1,11 +1,5 @@
-{% extends "layout.html" %}
+{% extends "layouts/admin/base-account-question.html" %}
 {% set selectedInstallation = (data['new-trusted-account']['installation']) or '' %}
-{% set installationID = '' %}
-{% for item in data['installations'] %}
-  {% if selectedInstallation == (item.name) | trim %}
-    {% set installationID = item.permitId %}
-  {% endif %}
-{% endfor %}
 
 <!-- Adds a class to increase vertical spacing for pages without a back button -->
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -15,9 +9,6 @@
 {% endblock %}
 
 {% block content %}
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
         <div class="govuk-panel govuk-panel--confirmation govuk-!-margin-bottom-9">
         <h1 class="govuk-panel__title">Completed</h1>
         <div class="govuk-panel__body">
@@ -26,9 +17,7 @@
       </div>
 
       {{ govukInsetText({
-        html: "Visit account page to <a class='govuk-link' href='/account/" + installationID +"?view=trustedAccounts'>manage trusted accounts</a>."
+        html: "Visit account page to <a class='govuk-link' href='/account/" + installationID +"#trusted-accounts'>manage trusted accounts</a>."
       }) }}
-    </div>
-  </div>
 
 {% endblock %}
