@@ -92,7 +92,13 @@
   <div class="hmcts-identity-bar__container">
     <div class="hmcts-identity-bar__details">
         <span class="hmcts-identity-bar__title">
-        <strong>{{ installationData.name }}</strong><span class="jui-status  jui-status--new  govuk-!-margin-left-1">Operator account</span>
+        <strong>{{ installationData.name }}</strong>
+        <span class="jui-status  jui-status--new  govuk-!-margin-left-1">
+        {% if data['pageView'] == 'trader' %}
+        Trader
+        {% else %}
+        Operator
+        {% endif %} account</span>
         </span>
     </div>
     <div class="hmcts-identity-bar__actions">
