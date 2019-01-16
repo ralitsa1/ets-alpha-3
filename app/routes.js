@@ -131,14 +131,15 @@ router.post('/account/:id/add-a-new-authorised-representative/confirmation', fun
 })
 
 router.post('/account/:id/add-a-new-trusted-account/account-details', function (req, res, next) {
-  var newTrustedAccountId = req.session.data['new-trusted-account']['id'] || ' '
-  var doesItemExist = req.session.data['existing-accounts'].find(o => o.id === newTrustedAccountId) || false
+//   var newTrustedAccountId = req.session.data['new-trusted-account']['id'] || ' '
+//   var doesItemExist = req.session.data['existing-accounts'].find(o => o.id === newTrustedAccountId) || false
 
-  if (newTrustedAccountId !== ' ' && doesItemExist) {
+//   // if (newTrustedAccountId !== ' ' && doesItemExist) {
     res.redirect('/account/' + req.params.id + '/add-a-new-trusted-account/check-account-details')
-  } else {
-    res.redirect('/account/' + req.params.id + '/add-a-new-trusted-account/account-details?error=true')
-  }
+//   // } else {
+//   //   res.redirect('/account/' + req.params.id + '/add-a-new-trusted-account/account-details?error=true')
+//   // }
+  next()
 })
 
 router.post('/account/:id/add-a-new-trusted-account/confirmation', function (req, res, next) {

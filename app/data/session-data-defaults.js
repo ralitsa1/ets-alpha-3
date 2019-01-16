@@ -51,6 +51,19 @@ module.exports = {
       ]
     },
     {
+      'name': 'ETS Trades',
+      'units': 2500,
+      'permitId': 'EU-100-82345-0-757',
+      'type': 'trading',
+      'emissionAllowance': [
+        {
+          'general-allowance': 1978,
+          'CER': 500,
+          'ERU': 22
+        }
+      ]
+    },
+    {
       'name': 'Port Talbot Steelworks',
       'units': 2364,
       'permitId': 'EU-100-73104-0-76',
@@ -113,6 +126,15 @@ module.exports = {
       jobTitle: 'Financial Controller',
       email: 'cecille@reretscottley.com',
       phone: '07823 274545'
+    }
+  ],
+  'available-authorised-reps': [
+    {
+      name: 'Joe Brown',
+      id: '939-216-693',
+      jobTitle: 'Account Manager',
+      email: 'joe.brown@blue.com',
+      phone: '07823 423242'
     }
   ],
   'transactions': [

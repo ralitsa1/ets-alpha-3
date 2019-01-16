@@ -7,8 +7,9 @@
 
       <h2 class="govuk-heading-m">Holdings</h2>
       <P>You have <strong>2500</strong> units. <!-- You need to surrender <strong>2160</strong> units by 20 April 2019.--></p>
+      {% if data['pageView'] == 'operator' or data['pageView'] == 'ea' %}
       <h2 class="govuk-heading-m">Compliance History</h2>
-<table class="govuk-table" data-type="compliance-period">
+      <table class="govuk-table" data-type="compliance-period">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row govuk-!-font-size-16">
             <th class="govuk-table__header" scope="col">Date submitted</th>
@@ -78,6 +79,7 @@
 
         </tbody>
       </table>
+      {% endif %}
       <h2 class="govuk-heading-m">Transaction History</h2>
 <table class="govuk-table" data-type="transactions">
         <thead class="govuk-table__head">
@@ -179,7 +181,7 @@
             {% if data['newTrustedAccounts'] %}
             {% for item in data['newTrustedAccounts'] %}
               <tr class="govuk-table__row govuk-!-font-size-16">
-              <th class="govuk-table__cell" scope="row"><a href="#">EU-100-99924-XXX</a><br />
+              <th class="govuk-table__cell" scope="row"><a href="#">EU-100-70694-0-13</a><br />
               {{ govukTag({
                 text: "new"
               }) }}
@@ -187,7 +189,7 @@
               <td class="govuk-table__cell ">{{ item.nickname }} <br />
               <i>{{ item.note }}</i>
               </td>
-              <td class="govuk-table__cell ">XXX</td>
+              <td class="govuk-table__cell ">Green Stripe Food and Drinks Limited</td>
           </tr>
             {% endfor %}
             {% endif %}
@@ -215,14 +217,14 @@
           {% if data['newAuthorisedReps'] %}
           {% for name in data['newAuthorisedReps'] %}
             <tr class="govuk-table__row govuk-!-font-size-16">
-              <th class="govuk-table__cell" scope="row"><a href="#">995-543-XXX</a><br />
+              <th class="govuk-table__cell" scope="row"><a href="#">939-216-693</a><br />
               {{ govukTag({
                 text: "new"
               }) }} 
               </th>
               <td class="govuk-table__cell ">{{ name }}</td>
-              <td class="govuk-table__cell ">XXX</td> 
-              <td class="govuk-table__cell ">XXX</td>
+              <td class="govuk-table__cell ">Account Manager</td> 
+              <td class="govuk-table__cell ">joe.brown@blue.com <br />Tel: 07823 423242</td>
             </tr>
           {% endfor %}
           {% endif %}
