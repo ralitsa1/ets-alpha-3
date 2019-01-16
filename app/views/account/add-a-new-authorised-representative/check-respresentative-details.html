@@ -1,7 +1,7 @@
 {% extends "layouts/admin/base-account-question.html" %}
 {% set newUserId = (data['new-linked-representative']['id']) | trim or '' %}
 {% set userDetails = '' %}
-{% for item in data['existing-authorised-representatives'] %}
+{% for item in data['available-authorised-reps'] %}
   {% if newUserId == (item.id) | trim %}
     {% set userDetails = item.name %}
     {% set userid = item.id %}
