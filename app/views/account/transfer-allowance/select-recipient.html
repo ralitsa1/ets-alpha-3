@@ -17,26 +17,22 @@ Select recipient
         idPrefix: "select-recipient",
         name: "ets-transfer-allowance[select-recipient]",
         fieldset: {},
-        items:, [
+        items: [
           {
             value: "existing",
             text: "An installation or airline you manage",
-
             checked: checked("['ets-transfer-allowance']['select-recipient']",'existing')
           },
           {
             value: "existing",
             text: "An installation or airline whose details you've saved before",
-
             checked: checked("['ets-transfer-allowance']['select-recipient']",'new')
-          }
-
+          },
           {
             value: "new",
             text: "An installation or airline whose details you haven't saved before",
-
             checked: checked("['ets-transfer-allowance']['select-recipient']",'existing')
-          },
+          }
         ]
       }) }}
 
